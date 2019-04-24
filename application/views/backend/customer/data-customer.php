@@ -36,7 +36,7 @@
                         </div>
                         <div class="pull-right">
                             <a class="btn btn-sm btn-primary mg-b-10" href="#" data-toggle="modal" data-target="#modaladd">Tambah</a>
-                            <button class="btn btn-default" onclick="openForm()">Test</button>
+                            <!-- <button class="btn btn-default" onclick="openForm()">Test</button> -->
                         </div>
                     </div>
                 </div>
@@ -81,7 +81,7 @@
                 </div>
             </div>
         </div>
-        <div id="form-element" class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+        <!-- <div id="form-element" class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
             <div class="sparkline16-list responsive-mg-b-30">
                 <div class="sparkline8-hd" style="margin-bottom:50px;">
                     <div class="main-sparkline8-hd">
@@ -110,7 +110,7 @@
                     </form>
                 </div>
             </div>
-        </div>
+        </div> -->
     </div>
     <div id="modaladd" class="modal modal-edu-general default-popup-PrimaryModal fade" role="dialog">
         <div class="modal-dialog">
