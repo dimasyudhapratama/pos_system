@@ -109,10 +109,43 @@
                             </a>
                         </li>
                         <li>
-                            <a title="Kategori Produk" href="<?php echo base_url().'index.php/kategori_produk' ?>" aria-expanded="false">
+                            <a title="Customer" href="" href="<?php echo base_url().'index.php/supplier' ?>" aria-expanded="false">
                                 <span class="fa fa-user" aria-hidden="true"></span> 
-                                <span class="mini-click-non">Kategori Produk</span>
+                                <span class="mini-click-non">Supplier</span>
                             </a>
+                        </li>
+                        <li>
+                            <a class="has-arrow" href="index.html">
+								   <span class="fa fa-home"></span>
+								   <span class="mini-click-non">Katalog</span>
+								</a>
+                            <ul class="submenu-angle" aria-expanded="true">
+                                <li><a title="Kategori Produk" href="<?php echo base_url().'index.php/kategori_produk' ?>"><span class="mini-sub-pro">Kategori Produk</span></a></li>
+                                <li><a title="List Produk" href="<?php echo base_url().'index.php/produk' ?>"><span class="mini-sub-pro">Produk</span></a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a class="has-arrow" href="index.html">
+								   <span class="fa fa-home"></span>
+								   <span class="mini-click-non">Bahan Baku</span>
+								</a>
+                            <ul class="submenu-angle" aria-expanded="true">
+                                <li><a title="Kategori Bahan Baku" href="<?php echo base_url().'index.php/kategori_bahan_baku' ?>"><span class="mini-sub-pro">Kategori Bahan Baku</span></a></li>
+                                <li><a title="List Bahan Baku" href="<?php echo base_url().'index.php/list_bahan_baku' ?>"><span class="mini-sub-pro">List Bahan Baku</span></a></li>
+                                <li><a title="Resep" href="<?php echo base_url().'index.php/resep' ?>"><span class="mini-sub-pro">Resep</span></a></li>
+                                
+                            </ul>
+                        </li>
+                        <li>
+                            <a class="has-arrow" href="index.html">
+								   <span class="fa fa-home"></span>
+								   <span class="mini-click-non">Staff</span>
+								</a>
+                            <ul class="submenu-angle" aria-expanded="true">
+                                <li><a title="Pengaturan Hak Akses" href="<?php echo base_url().'index.php/pengaturan_hak_akses' ?>"><span class="mini-sub-pro">Pengaturan Hak Akses</span></a></li>
+                                <li><a title="List Staff" href="<?php echo base_url().'index.php/list_staff' ?>"><span class="mini-sub-pro">List Staff</span></a></li>
+                                
+                            </ul>
                         </li>
                         <li>
                             <a class="has-arrow" href="index.html">
