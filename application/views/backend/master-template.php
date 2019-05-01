@@ -158,7 +158,10 @@
                             </ul>
                         </li>
                         <li>
-                            <a title="Landing Page" href="<?php echo base_url().'index.php/pemasukan_lain'?>" aria-expanded="false"><span class="educate-icon educate-event icon-wrap sub-icon-mg" aria-hidden="true"></span> <span class="mini-click-non">Event</span></a>
+                            <a title="Landing Page" href="<?php echo base_url().'index.php/pemasukan_lain'?>" aria-expanded="false"><span class="educate-icon educate-event icon-wrap sub-icon-mg" aria-hidden="true"></span> <span class="mini-click-non">Pemasukan Lain</span></a>
+                        </li>
+                        <li>
+                            <a title="Landing Page" href="<?php echo base_url().'index.php/pengeluaran_lain'?>" aria-expanded="false"><span class="educate-icon educate-event icon-wrap sub-icon-mg" aria-hidden="true"></span> <span class="mini-click-non">Pengeluaran Lain</span></a>
                         </li>
                         <li id="removable">
                             <a class="has-arrow" href="#" aria-expanded="false"><span class="educate-icon educate-pages icon-wrap"></span> <span class="mini-click-non">Pages</span></a>
