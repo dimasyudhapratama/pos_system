@@ -106,7 +106,7 @@ Class Bahan_baku extends CI_Controller{
         $where = array(
             'id_bahan_baku' => $id
         );
-        if($this->M_customer->deleteCustomer($where)==TRUE){
+        if($this->M_bahan_baku->deleteBahanBaku($where)==TRUE){
             redirect('bahan_baku');
         }else{
             redirect('test');
