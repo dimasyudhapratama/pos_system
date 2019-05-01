@@ -131,7 +131,7 @@
 								</a>
                             <ul class="submenu-angle" aria-expanded="true">
                                 <li><a title="Kategori Bahan Baku" href="<?php echo base_url().'index.php/kategori_bahan_baku' ?>"><span class="mini-sub-pro">Kategori Bahan Baku</span></a></li>
-                                <li><a title="List Bahan Baku" href="<?php echo base_url().'index.php/list_bahan_baku' ?>"><span class="mini-sub-pro">List Bahan Baku</span></a></li>
+                                <li><a title="List Bahan Baku" href="<?php echo base_url().'index.php/bahan_baku' ?>"><span class="mini-sub-pro">List Bahan Baku</span></a></li>
                                 <li><a title="Resep" href="<?php echo base_url().'index.php/resep' ?>"><span class="mini-sub-pro">Resep</span></a></li>
                                 
                             </ul>
