@@ -15,6 +15,12 @@
                     <input type="hidden" name="id_bahan_baku" id="id_bahan_baku" value="<?php echo $c->id_bahan_baku; ?>">
                     <div class="col-md-6">
                         <div class="form-group-inner">
+                                <label for="" class="pull-left">ID Kategori Bahan Baku</label>
+                                <input type="text" name="id_kategori_bahan_baku" class="form-control" placeholder="Masukkan ID Kategori Bahan baku" value="<?php echo $c->id_kategori_bahan_baku ?>">
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group-inner">
                                 <label for="" class="pull-left">Satuan</label>
                                 <input type="text" name="satuan" class="form-control" placeholder="Masukkan Satuan" value="<?php echo $c->satuan ?>">
                         </div>
