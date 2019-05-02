@@ -59,9 +59,14 @@
     <!-- responsive CSS
 		============================================ -->
     <link rel="stylesheet" href="<?php echo base_url()."assets/" ?>css/responsive.css">
+
+    <link rel="stylesheet" href="<?php echo base_url()."assets/" ?>css/datepicker/datepicker3">
     <!-- modernizr JS
 		============================================ -->
     <script src="<?php echo base_url()."assets/" ?>js/vendor/modernizr-2.8.3.min.js"></script>
+    <script src="<?php echo base_url()."assets/" ?>js/jquery.js"></script>
+    <script src="<?php echo base_url()."assets/" ?>js/datepicker/datepicker-active.js"></script>
+    <script src="<?php echo base_url()."assets/" ?>js/datepicker/jquery-ui.min.js"></script>
 </head>
 
 <body>
