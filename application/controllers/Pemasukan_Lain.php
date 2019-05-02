@@ -15,15 +15,10 @@ Class Pemasukan_Lain extends CI_Controller{
     }
     function add(){
         $config = array(
-            // array(
-            //     'field' => 'id_pemasukan_lain',
-            //     'label' => 'id_pemasukan_lain',
-            //     'rules' => 'required'
-            // ),
-            array(
-                'field' => 'judul_pemasukan_lain',
-                'label' => 'judul_pemasukan_lain',
-                'rules' => 'integer'
+             array(
+                 'field' => 'judul',
+                 'label' => 'judul',
+                'rules' => 'required'
             ),
             array(
                 'field' => 'jumlah',
@@ -36,11 +31,6 @@ Class Pemasukan_Lain extends CI_Controller{
                 'label' =>'keterangan',
                 'rules' =>'required'
             ),
-            // array(
-            //     'field' =>'tanggal',
-            //     'label' =>'tanggal',
-            //     'rules' =>'required'
-            // ),
         );
         $this->form_validation->set_rules($config);
         if($this->form_validation->run()==TRUE){
