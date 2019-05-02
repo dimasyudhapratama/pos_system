@@ -16,7 +16,7 @@ Class Pemasukan_Lain extends CI_Controller{
     function add(){
         $config = array(
              array(
-                 'field' => 'judul',
+                 'field' => 'judul_pemasukan_lain',
                  'label' => 'judul',
                 'rules' => 'required'
             ),
@@ -30,16 +30,16 @@ Class Pemasukan_Lain extends CI_Controller{
                 'field' =>'keterangan',
                 'label' =>'keterangan',
                 'rules' =>'required'
-            ),
+            )
         );
         $this->form_validation->set_rules($config);
         if($this->form_validation->run()==TRUE){
              $data = array(
-                'judul' => $this->input->post('judul'),
+                'judul' => $this->input->post('judul_pemasukan_lain'),
                 'jumlah' => $this->input->post('jumlah'),
                  'keterangan' => $this->input->post('keterangan')
              );
-            if($this->M_Pemasukan_Lain->addPemasukan_Lain($this->input->post())==TRUE){
+            if($this->M_Pemasukan_Lain->addPemasukanLain($this->input->post())==TRUE){
                 redirect('Pemasukan_Lain');
             }else{
                 redirect('test');
@@ -52,7 +52,7 @@ Class Pemasukan_Lain extends CI_Controller{
             'id_Pemasukan_Lain' => $this->input->post('id_Pemasukan_Lain')
         );
         $data['Pemasukan_Lain'] = $this->M_Pemasukan_Lain->get1Pemasukan_Lain($where);
-        $this->load->view("backend/Pemasukan_Lain/edit-Pemasukan_Lain",$data);
+        $this->load->view("backend/pemasukan_lain/edit_pemasukan_lain",$data);
     }
      function update(){
         $config = array(
@@ -100,9 +100,9 @@ Class Pemasukan_Lain extends CI_Controller{
     }
       function delete($id){
         $where = array(
-            'id_sPemasukan_Lain' => $id
+            'id_Pemasukan_Lain' => $id
         );
-        if($this->M_Pemasukan_Lain->deletePemasukan_Lain($where)==TRUE){
+        if($this->M_Pemasukan_Lain->deletePemasukanLain($where)==TRUE){
             redirect('Pemasukan_Lain');
         }else{
             redirect('test');

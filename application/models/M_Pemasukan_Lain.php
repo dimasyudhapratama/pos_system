@@ -2,6 +2,7 @@
 defined("BASEPATH") or die("No Direct Access Allowed");
 Class M_Pemasukan_Lain extends CI_Model{
     private $_table = "pemasukan_lain";
+    
     function getPemasukanLain(){
     return $this->db->get($this->_table)->result();
     }
@@ -12,7 +13,7 @@ Class M_Pemasukan_Lain extends CI_Model{
     	if($this->db->insert($this->_table,$data) == TRUE){
     		return TRUE;
     	}else{
-    		return FALSE;
+            return FALSE;
     	}
     }
     function updatePemasukanLain($where,$data){

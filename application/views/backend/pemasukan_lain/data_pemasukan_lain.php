@@ -14,9 +14,9 @@
     // }
     function edit(id){
         $.ajax({
-            url: "<?php echo base_url().'index.php/supplier/edit'; ?>",
+            url: "<?php echo base_url().'index.php/pemasukan_lain/edit'; ?>",
             type: "POST",
-            data : {id_supplier: id},
+            data : {id_pemasukan_lain: id},
             success: function (ajaxData){
                 $("#modaledit").html(ajaxData);
                 $("#modaledit").modal('show',{backdrop: 'true'});
@@ -44,7 +44,7 @@
                         <table class="table">
                             <thead>
                                 <tr style="background-color:#EEEEEE">
-                                    <th>Id</th>
+                                    <th>ID</th>
                                     <th>Judul Pemasukan Lain</th>
                                     <th>Jumlah</th>
                                     <th>Keterangan</th>
@@ -58,7 +58,7 @@
                                 foreach($dd as $c){ 
                                 ?>
                                 <tr>
-                                    <td><?php echo $no++ ?></td>
+                                   
                                     <td><?php echo $c->id_pemasukan_lain; ?></td>
                                     <td><?php echo $c->judul_pemasukan_lain; ?></td>
                                     <td><?php echo $c->jumlah; ?></td>
@@ -72,8 +72,8 @@
                                             </button>
                                             <ul class="dropdown-menu" role="menu">
                                                 <!-- <li><a class="click-edit" href="#" id="<?php echo $c->id_pemasukan_lain; ?>">Edit</a></li> -->
-                                                <li><a onclick="edit(<?php echo $c->id_pemasukan_lain; ?>)" data-toggle="modal" href="#">Edit</a></li>
-                                                <li><a onclick="return confirm('Anda Yakin Ingin Menghapus Data?')" href="<?php echo base_url().'index.php/supplier/delete/'.$c->id_supplier ?>">Delete</a></li>
+                                                <li><a onclick="edit(<?php echo $c->id_pemasukan_lain; ?>)" data-toggle="modal" href="<?php echo base_url().'index.php/pemasukan_lain/update/'.$c->id_pemasukan_lain ?>">Edit</a></li>
+                                                <li><a onclick="return confirm('Anda Yakin Ingin Menghapus Data?')" href="<?php echo base_url().'index.php/pemasukan_lain/delete/'.$c->id_pemasukan_lain ?>">Delete</a></li>
                                             </ul>
                                         </div>
                                     </td>
