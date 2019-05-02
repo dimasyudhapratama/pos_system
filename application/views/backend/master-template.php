@@ -69,7 +69,13 @@
     <!-- jquery
     ============================================ -->
     <script src="<?php echo base_url() ?>assets/backend/js/jquery-3.4.0.min.js"></script>
-    <!-- <script src="<?php echo base_url() ?>assets/backend/js/jquery.js"></script> -->
+    <!-- Datatables -->
+    <link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>assets/backend/css/datatables/datatables.min.css"/>
+ 
+    <script type="text/javascript" src="<?php echo base_url() ?>assets/backend/js/datatables/datatables.min.js"></script>
+
+
+    
 
     <style>
         .bgredd{
@@ -97,21 +103,27 @@
                 <nav class="sidebar-nav left-sidebar-menu-pro">
                     <ul class="metismenu" id="menu1">
                         <li>
-                            <a title="Dashboard" href="" aria-expanded="false">
+                            <a title="Dashboard" href="<?php echo base_url(); ?>" aria-expanded="false">
                                 <span class="fa fa-home" aria-hidden="true"></span> 
                                 <span class="mini-click-non">Home</span>
                             </a>
                         </li>
                         <li>
-                            <a title="Customer" href="" href="<?php echo base_url().'index.php/customer' ?>" aria-expanded="false">
-                                <span class="fa fa-user" aria-hidden="true"></span> 
-                                <span class="mini-click-non">Customer</span>
+                            <a href="<?php echo base_url('index.php/pemasokan') ?>">
+                                <span class="fa fa-home" aria-hidden="true"></span>
+                                <span class="mini-clic-non">Pemasokan</span>
                             </a>
                         </li>
                         <li>
-                            <a title="Customer" href="" href="<?php echo base_url().'index.php/supplier' ?>" aria-expanded="false">
-                                <span class="fa fa-user" aria-hidden="true"></span> 
-                                <span class="mini-click-non">Supplier</span>
+                            <a href="<?php echo base_url('index.php/customer') ?>">
+                                <span class="fa fa-home" aria-hidden="true"></span>
+                                <span class="mini-clic-non">Customer</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="<?php echo base_url('index.php/supplier') ?>">
+                                <span class="fa fa-home" aria-hidden="true"></span>
+                                <span class="mini-clic-non">Supplier</span>
                             </a>
                         </li>
                         <li>
