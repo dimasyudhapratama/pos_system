@@ -34,12 +34,11 @@ Class Pemasukan_Lain extends CI_Controller{
         );
         $this->form_validation->set_rules($config);
         if($this->form_validation->run()==TRUE){
-            // $data = array(
-            //     'nama_Pemasukan_Lain' => $this->input->post('nama_Pemasukan_Lain'),
-            //     'no_hp' => $this->input->post('no_hp'),
-            //     'email' => $this->input->post('email'),
-            //     'alamat' => $this->input->post('alamat')
-            // );
+             $data = array(
+                'judul' => $this->input->post('judul'),
+                'jumlah' => $this->input->post('jumlah'),
+                 'keterangan' => $this->input->post('keterangan')
+             );
             if($this->M_Pemasukan_Lain->addPemasukan_Lain($this->input->post())==TRUE){
                 redirect('Pemasukan_Lain');
             }else{
