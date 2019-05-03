@@ -132,18 +132,10 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group-inner">
-                                    <div class='input-group date' id='datepicker1'>
                                         <label for="" class="pull-left">Tanggal</label>
-                                        <input type="text" name="tanggal" class="form-control" placeholder="Masukkan Tanggal" required>
-                                        <span class="glyphicon glyphicon-calendar"></span>
-                                    </div>
+                                        <input type="date" name="tanggal" class="form-control" placeholder="Masukkan Tanggal" required>
                                 </div>
                             </div>
-                            <script type="text/javascript">
-                            $(function () {
-                            $('#datepicker1').datepicker();
-                            });
-                            </script>
                             <div class="col-md-6">
                                 <div class="form-group-inner">
                                     <label for="" class="pull-left">Judul Pengeluaran Lain</label>
@@ -161,7 +153,7 @@
                             <div class="col-md-6">
                                 <div class="form-group-inner">
                                         <label for="" class="pull-left">Keterangan</label>
-                                        <input type="text" name="keterangan" class="form-control" placeholder="Masukkan keterangan">
+                                        <textarea name="keterangan" class="form-control" placeholder="Masukkan keterangan"></textarea>
                                 </div>
                             </div>
                         </div>
