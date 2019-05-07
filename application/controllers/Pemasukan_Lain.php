@@ -17,7 +17,7 @@ Class Pemasukan_Lain extends CI_Controller{
         $config = array(
              array(
                  'field' => 'judul_pemasukan_lain',
-                 'label' => 'judul',
+                 'label' => 'judul_pemasukan_lain',
                 'rules' => 'required'
             ),
             array(
@@ -30,20 +30,28 @@ Class Pemasukan_Lain extends CI_Controller{
                 'field' =>'keterangan',
                 'label' =>'keterangan',
                 'rules' =>'required'
-            )
+            ),
+            array(
+                'field' =>'tanggal',
+                'label' =>'tanggal',
+                'rules' =>'required'
+            ),
         );
         $this->form_validation->set_rules($config);
         if($this->form_validation->run()==TRUE){
              $data = array(
-                'judul' => $this->input->post('judul_pemasukan_lain'),
+                'judul_pemasukan_lain' => $this->input->post('judul_pemasukan_lain'),
                 'jumlah' => $this->input->post('jumlah'),
-                 'keterangan' => $this->input->post('keterangan')
+                'keterangan' => $this->input->post('keterangan')
              );
-            if($this->M_Pemasukan_Lain->addPemasukanLain($this->input->post())==TRUE){
+            if($this->M_Pemasukan_Lain->addPemasukanLain($data)==TRUE){
                 redirect('Pemasukan_Lain');
             }else{
-                redirect('test');
+                redirect('customer');
             }
+        }
+        else{
+            echo "gagal";
         }
     }
     function edit(){

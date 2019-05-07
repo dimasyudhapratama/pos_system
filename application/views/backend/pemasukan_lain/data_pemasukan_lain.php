@@ -131,13 +131,13 @@
                             <div class="col-md-6">
                                 <div class="form-group-inner">
                                     <label for="" class="pull-left">Judul</label>
-                                    <input type="text" name="nama_pemasukan_lain" class="form-control" placeholder="Masukkan Judul" required>
+                                    <input type="text" name="judul_pemasukan_lain" class="form-control" placeholder="Masukkan Judul" required>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group-inner">
                                         <label for="" class="pull-left">Jumlah</label>
-                                        <input type="text" name="" class="form-control" placeholder="Masukkan Jumlah">
+                                        <input type="text" name="jumlah" class="form-control" placeholder="Masukkan Jumlah">
                                 </div>
                             </div>
                         </div>
@@ -145,9 +145,18 @@
                             <div class="col-md-6">
                                 <div class="form-group-inner">
                                         <label for="" class="pull-left">Keterangan</label>
-                                        <input type="text" name="email" class="form-control" placeholder="Masukkan Keterangan">
+                                        <input type="text" name="keterangan" class="form-control" placeholder="Masukkan Keterangan">
                                 </div>
                             </div>
+                            <div class="col-md-6">
+                                <div class="form-group-inner">
+                                    <div class='input-group date' id='datepicker1'>
+                                        <label for="" class="pull-left">Tanggal</label>
+                                        <input type="text" name="tanggal" class="form-control" placeholder="Masukkan Tanggal" required>
+                                    </div>
+                                </div>
+                            </div>
+                    </div>
                     </div>
                     <div class="modal-footer">
                         <input class="btn btn-sm btn-default" type="reset" value="Reset">
