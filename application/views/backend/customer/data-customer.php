@@ -1,6 +1,9 @@
 
 <script type="text/javascript">
     $(document).ready(function(){
+        $("#primary-table").DataTable();
+    });
+    $(document).ready(function(){
         $("#form-element").hide();
     });
     function openForm(){
@@ -42,7 +45,7 @@
                 </div>
                 <div class="sparkline8-graph">
                     <div class="static-table-list">
-                        <table class="table">
+                        <table id="primary-table" class="table">
                             <thead>
                                 <tr style="background-color:#EEEEEE">
                                     <th>#</th>
