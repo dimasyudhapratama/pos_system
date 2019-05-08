@@ -152,7 +152,7 @@
                                 <div class="form-group-inner">
                                     <div class='input-group date' id='datepicker1'>
                                         <label for="" class="pull-left">Tanggal</label>
-                                        <input type="text" name="tanggal" class="form-control" placeholder="Masukkan Tanggal" required>
+                                        <input type="date" name="tanggal" class="form-control" placeholder="Masukkan Tanggal" required>
                                     </div>
                                 </div>
                             </div>

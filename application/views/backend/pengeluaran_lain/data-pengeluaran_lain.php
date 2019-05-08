@@ -46,9 +46,8 @@
                             <thead>
                                 <tr style="background-color:#EEEEEE">
                                     <th>#</th>
-                                    <th>ID Pengeluaran Lain</th>
                                     <th>Tanggal</th>
-                                    <th>Judul Pengeluaran Lain</th>
+                                    <th>Judul</th>
                                     <th>Jumlah</th>
                                     <th>Keterangan</th>
                                     <th style="text-align:center">Aksi</th>
@@ -61,7 +60,6 @@
                                 ?>
                                 <tr>
                                     <td><?php echo $no++ ?></td>
-                                    <td><?php echo $c->id_pengeluaran_lain; ?></td>
                                     <td><?php echo $c->tanggal; ?></td>
                                     <td><?php echo $c->judul_pengeluaran_lain; ?></td>
                                     <td><?php echo $c->jumlah; ?></td>
@@ -138,14 +136,14 @@
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group-inner">
-                                    <label for="" class="pull-left">Judul Pengeluaran Lain</label>
+                                    <label for="" class="pull-left">Judul</label>
                                     <input type="text" name="judul_pengeluaran_lain" class="form-control" placeholder="Masukkan Judul Pengeluaran Lain" required>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group-inner">
                                         <label for="" class="pull-left">Jumlah</label>
-                                        <input type="text" name="jumlah" class="form-control" placeholder="Masukkan Jumlah">
+                                        <input type="number" name="jumlah" class="form-control" placeholder="Masukkan Jumlah">
                                 </div>
                             </div>
                         </div>

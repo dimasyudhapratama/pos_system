@@ -64,7 +64,7 @@
                                     <td><?php echo $no++ ?></td>
                                     <td><?php echo $c->id_bahan_baku; ?></td>
                                     <td><?php echo $c->nama_bahan_baku; ?></td>
-                                    <td><?php echo $c->id_kategori_bahan_baku; ?></td>
+                                    <td><?php echo $c->nama_kategori_bahan_baku; ?></td>
                                     <td><?php echo $c->satuan; ?></td>
                                     <td><?php echo $c->stok; ?></td>
                                     <td><?php echo $c->limit_stok; ?></td>
@@ -135,7 +135,17 @@
                             <div class="col-md-6">
                                 <div class="form-group-inner">
                                     <label for="" class="pull-left">Kategori Bahan Baku</label>
-                                    <input type="text" name="id_kategori_bahan_baku" class="form-control" placeholder="Masukkan ID Kategori Bahan Baku" required>
+                                    <select class="form-control" name="id_kategori_bahan_baku" >
+                                    <option value="">Pilih Disini</option>
+                                        <?php 
+                                        foreach ($kategori_bahan_baku as $data) {
+                                        ?>
+                                            
+                                            <option value="<?php echo $data->id_kategori_bahan_baku ?>"><?php echo $data->nama_kategori_bahan_baku ?></option>
+                                        <?php 
+                                        }
+                                         ?>
+                                    </select>
                                 </div>
                             </div>
                             <div class="col-md-6">
