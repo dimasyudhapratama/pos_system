@@ -28,6 +28,11 @@ Class Bahan_baku extends CI_Controller{
                 'rules' => 'required'
             ),
             array(
+                'field' => 'nama_bahan_baku',
+                'label' => 'Nama Bahan Baku',
+                'rules' => 'required'
+            ),
+            array(
                 'field' => 'stok',
                 'label' => 'Stok',
                 'rules' => 'integer'
@@ -44,7 +49,8 @@ Class Bahan_baku extends CI_Controller{
                 'id_kategori_bahan_baku' => $this->input->post('id_kategori_bahan_baku'),
                 'satuan' => $this->input->post('satuan'),
                 'stok' => $this->input->post('stok'),
-                'limit_stok' => $this->input->post('limit_stok')
+                'limit_stok' => $this->input->post('limit_stok'),       
+                'nama_bahan_baku' => $this->input->post('nama_bahan_baku')
             );
             if($this->M_bahan_baku->addBahanBaku($data)==TRUE){
                 redirect('bahan_baku');
@@ -74,6 +80,11 @@ Class Bahan_baku extends CI_Controller{
                 'rules' => 'required'
             ),
             array(
+                'field' => 'nama_bahan_baku',
+                'label' => 'nama bahan baku',
+                'rules' => 'required'
+            ),
+            array(
                 'field' => 'stok',
                 'label' => 'Stok',
                 'rules' => 'integer'
@@ -93,6 +104,7 @@ Class Bahan_baku extends CI_Controller{
                 'id_kategori_bahan_baku' => $this->input->post('id_kategori_bahan_baku'),
                 'satuan' => $this->input->post('satuan'),
                 'stok' => $this->input->post('stok'),
+                'nama_bahan_baku' => $this->input->post('nama_bahan_baku'),
                 'limit_stok' => $this->input->post('limit_stok')
             );
             if($this->M_bahan_baku->updateBahanBaku($where,$data)==TRUE){

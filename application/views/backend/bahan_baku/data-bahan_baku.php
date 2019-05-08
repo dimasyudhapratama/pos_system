@@ -47,7 +47,8 @@
                                 <tr style="background-color:#EEEEEE">
                                     <th>#</th>
                                     <th>ID Bahan Baku</th>
-                                    <th>ID Kategori Bahan Baku</th>
+                                    <th>Nama Bahan Baku</th>
+                                    <th>Kategori Bahan Baku</th>
                                     <th>Satuan</th>
                                     <th>Stok</th>
                                     <th>Limit Stok</th>
@@ -62,7 +63,8 @@
                                 <tr>
                                     <td><?php echo $no++ ?></td>
                                     <td><?php echo $c->id_bahan_baku; ?></td>
-                                    <td><?php echo $c->id_kategori_bahan_baku; ?></td>
+                                    <td><?php echo $c->nama_bahan_baku; ?></td>
+                                    <td><?php echo $c->nama_kategori_bahan_baku; ?></td>
                                     <td><?php echo $c->satuan; ?></td>
                                     <td><?php echo $c->stok; ?></td>
                                     <td><?php echo $c->limit_stok; ?></td>
@@ -132,8 +134,24 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group-inner">
-                                    <label for="" class="pull-left">ID Kategori Bahan Baku</label>
-                                    <input type="text" name="id_kategori_bahan_baku" class="form-control" placeholder="Masukkan ID Kategori Bahan Baku" required>
+                                    <label for="" class="pull-left">Kategori Bahan Baku</label>
+                                    <select class="form-control" name="id_kategori_bahan_baku" >
+                                    <option value="">Pilih Disini</option>
+                                        <?php 
+                                        foreach ($kategori_bahan_baku as $data) {
+                                        ?>
+                                            
+                                            <option value="<?php echo $data->id_kategori_bahan_baku ?>"><?php echo $data->nama_kategori_bahan_baku ?></option>
+                                        <?php 
+                                        }
+                                         ?>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group-inner">
+                                    <label for="" class="pull-left">Nama Bahan Baku</label>
+                                    <input type="text" name="nama_bahan_baku" class="form-control" placeholder="Masukkan Nama Bahan Baku" required>
                                 </div>
                             </div>
                             <div class="col-md-6">
