@@ -132,6 +132,7 @@
                                         <?php 
                                         foreach ($kategori as $data) {
                                         ?>
+                                            <option>---Pilih---</option>
                                             <option value="<?php echo $data->id_kategori_produk ?>"><?php echo $data->nama_kategori ?></option>
                                         <?php 
                                         }
@@ -168,21 +169,22 @@
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group-inner">
-                                        <label for="" class="pull-left">Stock</label>
-                                        <input type="text" name="stok" class="form-control" placeholder="stock">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="form-group-inner">
                                 <label for="" class="pull-left">Metode Tracking</label>
                                 <select name="metode_tracking" class="form-control" required="">
+                                    <option>---Pilih---</option>
                                     <option value="1">Berdasarkan Produk</option>
                                     <option value="2">Berdasarkan Bahan Baku</option>
                                 </select>
                                 </div>
                             </div>
+                        </div>
+                        <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group-inner">
+                                <label for="" class="pull-left">Stock</label>
+                                <input type="text" name="stok" class="form-control" placeholder="stock">
+                            </div>
+                        </div>
                             <div class="col-md-6">
                                 <div class="form-group-inner">
                                     <label for="" class="pull-left">Limit Stok</label>
