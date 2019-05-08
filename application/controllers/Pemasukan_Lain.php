@@ -42,7 +42,8 @@ Class Pemasukan_Lain extends CI_Controller{
              $data = array(
                 'judul_pemasukan_lain' => $this->input->post('judul_pemasukan_lain'),
                 'jumlah' => $this->input->post('jumlah'),
-                'keterangan' => $this->input->post('keterangan')
+                'keterangan' => $this->input->post('keterangan'),
+                'tanggal' => $this->input->post("tanggal")
              );
             if($this->M_Pemasukan_Lain->addPemasukanLain($data)==TRUE){
                 redirect('Pemasukan_Lain');
