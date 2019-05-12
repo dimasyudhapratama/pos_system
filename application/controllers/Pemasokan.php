@@ -121,4 +121,23 @@ Class Pemasokan extends CI_Controller{
             echo "Gagal Validasi";
         }
     }
+    function detail(){
+        $data['title'] = "Detail Pemasokan";
+        $data['path'] = "backend/pemasokan/detail-pemasokan";
+        $where = array(
+            'id_pemasokan' => $this->uri->segment('3'),
+        );
+        $data['pemasokan'] = $this->M_pemasokan->get1Pemasokan($where);
+        $data['detail_pemasokan'] = $this->M_pemasokan->getDetailPemasokan($where);
+        $this->load->view('backend/master-template',$data);
+    }
+    function ubahStatus(){
+        $data['id'] = $this->input->post('id');
+        $where = array(
+            'id_pemasokan' => $data['id']
+        );
+        $data['pemasokan'] = $this->M_pemasokan->get1Pemasokan($where);
+        
+        $this->load->view('backend/pemasokan/ubah-status',$data);
+    }
 }

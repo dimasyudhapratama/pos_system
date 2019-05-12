@@ -68,7 +68,10 @@
     <link rel="stylesheet" href="<?php echo base_url() ?>assets/backend/css/chosen/bootstrap-chosen.css">
     <!-- select2 CSS
 		============================================ -->
-    <link rel="stylesheet" href="<?php echo base_url() ?>assets/backend/css/select2/select2.min.css">
+    <link rel="stylesheet" href="<?php echo base_url() ?>assets/backend/css/select2/select2.min.css"> 
+    <!-- forms CSS
+		============================================ -->
+    <link rel="stylesheet" href="<?php echo base_url() ?>assets/backend/css/form/all-type-forms.css">
     <!-- modernizr JS
 		============================================ -->
     <script src="<?php echo base_url() ?>assets/backend/js/vendor/modernizr-2.8.3.min.js"></script>
@@ -79,16 +82,29 @@
     <link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>assets/backend/css/datatables/datatables.min.css"/>
  
     <script type="text/javascript" src="<?php echo base_url() ?>assets/backend/js/datatables/datatables.min.js"></script>
-
-
-    
-
     <style>
         .bgredd{
             background-color:red;
         }
         .ubah{
             border-radius:10%;
+        }
+        .form-control-plaintext {
+            display: block;
+            width: 100%;
+            padding-top: $input-padding-y;
+            padding-bottom: $input-padding-y;
+            margin-bottom: 0; // match inputs if this class comes on inputs with default margins
+            line-height: $input-line-height;
+            background-color: transparent;
+            border: solid transparent;
+            border-width: $input-border-width 0;
+
+            &.form-control-sm,
+            &.form-control-lg {
+                padding-right: 0;
+                padding-left: 0;
+            }
         }
     </style>
     
@@ -505,13 +521,14 @@
     <script src="<?php echo base_url() ?>assets/backend/js/sparkline/sparkline-active.js"></script>
     <!-- chosen JS
 		============================================ -->
-        <script src="<?php echo base_url() ?>assets/backend/js/chosen/chosen.jquery.js"></script>
-        <script src="<?php echo base_url() ?>assets/backend/js/chosen/chosen-active.js"></script>
+    <script src="<?php echo base_url() ?>assets/backend/js/chosen/chosen.jquery.js"></script>
+    <script src="<?php echo base_url() ?>assets/backend/js/chosen/chosen-active.js"></script>
         
     <!-- select2 JS
 		============================================ -->
     <script src="<?php echo base_url() ?>assets/backend/js/select2/select2.full.min.js"></script>
     <script src="<?php echo base_url() ?>assets/backend/js/select2/select2-active.js"></script>
+    
     <!-- tab JS
 		============================================ -->
     <script src="<?php echo base_url() ?>assets/backend/js/tab.js"></script>
