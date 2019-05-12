@@ -63,6 +63,15 @@
     <!-- responsive CSS
 		============================================ -->
     <link rel="stylesheet" href="<?php echo base_url() ?>assets/backend/css/responsive.css">
+    <!-- chosen CSS
+		============================================ -->
+    <link rel="stylesheet" href="<?php echo base_url() ?>assets/backend/css/chosen/bootstrap-chosen.css">
+    <!-- select2 CSS
+		============================================ -->
+    <link rel="stylesheet" href="<?php echo base_url() ?>assets/backend/css/select2/select2.min.css"> 
+    <!-- forms CSS
+		============================================ -->
+    <link rel="stylesheet" href="<?php echo base_url() ?>assets/backend/css/form/all-type-forms.css">
     <!-- modernizr JS
 		============================================ -->
     <script src="<?php echo base_url() ?>assets/backend/js/vendor/modernizr-2.8.3.min.js"></script>
@@ -73,16 +82,29 @@
     <link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>assets/backend/css/datatables/datatables.min.css"/>
  
     <script type="text/javascript" src="<?php echo base_url() ?>assets/backend/js/datatables/datatables.min.js"></script>
-
-
-    
-
     <style>
         .bgredd{
             background-color:red;
         }
         .ubah{
             border-radius:10%;
+        }
+        .form-control-plaintext {
+            display: block;
+            width: 100%;
+            padding-top: $input-padding-y;
+            padding-bottom: $input-padding-y;
+            margin-bottom: 0; // match inputs if this class comes on inputs with default margins
+            line-height: $input-line-height;
+            background-color: transparent;
+            border: solid transparent;
+            border-width: $input-border-width 0;
+
+            &.form-control-sm,
+            &.form-control-lg {
+                padding-right: 0;
+                padding-left: 0;
+            }
         }
     </style>
     
@@ -109,21 +131,15 @@
                             </a>
                         </li>
                         <li>
-                            <a href="<?php echo base_url('index.php/pemasokan') ?>">
-                                <span class="fa fa-home" aria-hidden="true"></span>
-                                <span class="mini-clic-non">Pemasokan</span>
+                            <a title="Pemasokan" href="<?php echo base_url().'index.php/pemasokan'?>" aria-expanded="false">
+                                <span class="educate-icon educate-event icon-wrap sub-icon-mg" aria-hidden="true"></span> 
+                                <span class="mini-click-non">Pemasokan</span>
                             </a>
                         </li>
                         <li>
-                            <a href="<?php echo base_url('index.php/customer') ?>">
-                                <span class="fa fa-home" aria-hidden="true"></span>
-                                <span class="mini-clic-non">Customer</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="<?php echo base_url('index.php/supplier') ?>">
-                                <span class="fa fa-home" aria-hidden="true"></span>
-                                <span class="mini-clic-non">Supplier</span>
+                            <a title="Penjualan" href="<?php echo base_url().'index.php/penjualan'?>" aria-expanded="false">
+                                <span class="educate-icon educate-event icon-wrap sub-icon-mg" aria-hidden="true"></span> 
+                                <span class="mini-click-non">Penjualan</span>
                             </a>
                         </li>
                         <li>
@@ -145,45 +161,42 @@
                                 <li><a title="Kategori Bahan Baku" href="<?php echo base_url().'index.php/kategori_bahan_baku' ?>"><span class="mini-sub-pro">Kategori Bahan Baku</span></a></li>
                                 <li><a title="List Bahan Baku" href="<?php echo base_url().'index.php/bahan_baku' ?>"><span class="mini-sub-pro">List Bahan Baku</span></a></li>
                                 <li><a title="Resep" href="<?php echo base_url().'index.php/resep' ?>"><span class="mini-sub-pro">Resep</span></a></li>
-                                
                             </ul>
                         </li>
                         <li>
+                            <a title="Customer" href="<?php echo base_url().'index.php/customer'?>" aria-expanded="false">
+                                <span class="educate-icon educate-event icon-wrap sub-icon-mg" aria-hidden="true"></span> 
+                                <span class="mini-click-non">Customer</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a title="Supplier" href="<?php echo base_url().'index.php/supplier'?>" aria-expanded="false">
+                                <span class="educate-icon educate-event icon-wrap sub-icon-mg" aria-hidden="true"></span> 
+                                <span class="mini-click-non">Supplier</span>
+                            </a>
+                        </li>
+                        <li>
                             <a class="has-arrow" href="index.html">
-								   <span class="fa fa-home"></span>
+								   <span class="fa fa-person"></span>
 								   <span class="mini-click-non">Staff</span>
 								</a>
                             <ul class="submenu-angle" aria-expanded="true">
-                                <li><a title="Pengaturan Hak Akses" href="<?php echo base_url().'index.php/pengaturan_hak_akses' ?>"><span class="mini-sub-pro">Pengaturan Hak Akses</span></a></li>
+                                <li><a title="Pengaturan Hak Akses" href="<?php echo base_url().'index.php/hak_akses' ?>"><span class="mini-sub-pro">Hak Akses</span></a></li>
                                 <li><a title="List Staff" href="<?php echo base_url().'index.php/list_staff' ?>"><span class="mini-sub-pro">List Staff</span></a></li>
                                 
                             </ul>
                         </li>
                         <li>
-                            <a class="has-arrow" href="index.html">
+                            <a class="has-arrow" href="#">
 								   <span class="fa fa-home"></span>
-								   <span class="mini-click-non">Education</span>
+								   <span class="mini-click-non">Keuangan</span>
 								</a>
                             <ul class="submenu-angle" aria-expanded="true">
-                                <li><a title="Dashboard v.1" href=""><span class="mini-sub-pro">dashboard</span></a></li>
+                                <li><a title="Rekap Pemasukan" href="<?php echo base_url().'index.php/rekap_pemasukan' ?>"><span class="mini-sub-pro">Rekap Pemasukan</span></a></li>
+                                <li><a title="Rekap Pengeluaran" href="<?php echo base_url().'index.php/rekap_pengeluaran' ?>"><span class="mini-sub-pro">Rekap Pengeluaran</span></a></li>
+                                <li><a title="Pemasukan Lain" href="<?php echo base_url().'index.php/pemasukan_lain' ?>"><span class="mini-sub-pro">Pemasukan Lain</span></a></li>
+                                <li><a title="Pengeluaran Lain" href="<?php echo base_url().'index.php/pengeluaran_lain' ?>"><span class="mini-sub-pro">Pengeluaran Lain</span></a></li>
                                 
-                            </ul>
-                        </li>
-                        <li>
-                            <a title="Landing Page" href="<?php echo base_url().'index.php/pemasukan_lain'?>" aria-expanded="false"><span class="educate-icon educate-event icon-wrap sub-icon-mg" aria-hidden="true"></span> <span class="mini-click-non">Pemasukan Lain</span></a>
-                        </li>
-                        <li>
-                            <a title="Landing Page" href="<?php echo base_url().'index.php/pengeluaran_lain'?>" aria-expanded="false"><span class="educate-icon educate-event icon-wrap sub-icon-mg" aria-hidden="true"></span> <span class="mini-click-non">Pengeluaran Lain</span></a>
-                        </li>
-                        <li id="removable">
-                            <a class="has-arrow" href="#" aria-expanded="false"><span class="educate-icon educate-pages icon-wrap"></span> <span class="mini-click-non">Pages</span></a>
-                            <ul class="submenu-angle page-mini-nb-dp" aria-expanded="false">
-                                <li><a title="Login" href="login.html"><span class="mini-sub-pro">Login</span></a></li>
-                                <li><a title="Register" href="register.html"><span class="mini-sub-pro">Register</span></a></li>
-                                <li><a title="Lock" href="lock.html"><span class="mini-sub-pro">Lock</span></a></li>
-                                <li><a title="Password Recovery" href="password-recovery.html"><span class="mini-sub-pro">Password Recovery</span></a></li>
-                                <li><a title="404 Page" href="404.html"><span class="mini-sub-pro">404 Page</span></a></li>
-                                <li><a title="500 Page" href="500.html"><span class="mini-sub-pro">500 Page</span></a></li>
                             </ul>
                         </li>
                     </ul>
@@ -198,7 +211,7 @@
             <div class="row">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                     <div class="logo-pro">
-                        <a href="index.html"><img class="main-logo" src="<?php echo base_url() ?>assets/backend/img/logo/logo.png" alt="" /></a>
+                        <a href="<?php echo base_url(); ?>>"><img class="main-logo" src="<?php echo base_url() ?>assets/backend/img/logo/logo.png" alt="" /></a>
                     </div>
                 </div>
             </div>
@@ -506,6 +519,16 @@
 		============================================ -->
     <script src="<?php echo base_url() ?>assets/backend/js/sparkline/jquery.sparkline.min.js"></script>
     <script src="<?php echo base_url() ?>assets/backend/js/sparkline/sparkline-active.js"></script>
+    <!-- chosen JS
+		============================================ -->
+    <script src="<?php echo base_url() ?>assets/backend/js/chosen/chosen.jquery.js"></script>
+    <script src="<?php echo base_url() ?>assets/backend/js/chosen/chosen-active.js"></script>
+        
+    <!-- select2 JS
+		============================================ -->
+    <script src="<?php echo base_url() ?>assets/backend/js/select2/select2.full.min.js"></script>
+    <script src="<?php echo base_url() ?>assets/backend/js/select2/select2-active.js"></script>
+    
     <!-- tab JS
 		============================================ -->
     <script src="<?php echo base_url() ?>assets/backend/js/tab.js"></script>

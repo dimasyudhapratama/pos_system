@@ -157,7 +157,39 @@
                             <div class="col-md-6">
                                 <div class="form-group-inner">
                                     <label for="" class="pull-left">Satuan</label>
-                                    <input type="text" name="satuan" class="form-control" placeholder="Masukkan Satuan" required>
+                                    <!-- <input type="text" name="satuan" class="form-control" placeholder="Masukkan Satuan" required> -->
+                                    <select name="satuan" id="" class="chosen-select">
+                                        <option value="Bal">Bal (bal)</option>
+                                        <option value="Batang">Batang (btg)</option>
+                                        <option value="Botol">Botol (botol)</option>
+                                        <option value="Box">Box (box)</option>
+                                        <option value="Bungkus">Bungkus (bks)</option>
+                                        <option value="Butir">Butir (btr)</option>
+                                        <option value="Centimeter">Centimeter (cm)</option>
+                                        <option value="Cup">Cup (c)</option>
+                                        <option value="Kaleng">Kaleng (klg)</option>
+                                        <option value="Kardus">Kardus (kds)</option>
+                                        <option value="Karton">Karton (ktn)</option>
+                                        <option value="Karung">Karung (krg)</option>
+                                        <option value="Kilogram">Kilogram (kg)</option>
+                                        <option value="Krat">Krat (crt)</option>
+                                        <option value="Kwintal">Kwintal (kw)</option>
+                                        <option value="Liter">Liter (l)</option>
+                                        <option value="Lusin">Lusin (lsn)</option>
+                                        <option value="Meter">Meter (m)</option>
+                                        <option value="Miligram">Miligram (mg)</option>
+                                        <option value="Mililiter">Mililiter (ml)</option>
+                                        <option value="Ons">Ons (ons)</option>
+                                        <option value="Pack">Pack (pck)</option>
+                                        <option value="Pieces">Pieces (pcs)</option>
+                                        <option value="Potong">Potong (ptg)</option>
+                                        <option value="Sachet">Sachet (sct)</option>
+                                        <option value="TableSpoon">TableSpoon (tbsp)</option>
+                                        <option value="TeaSpoon">TeaSpoon (tsp)</option>
+                                        
+                                        
+                                        
+                                    </select>
                                 </div>
                             </div>
                             <div class="col-md-6">
