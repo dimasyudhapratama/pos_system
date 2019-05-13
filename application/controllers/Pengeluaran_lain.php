@@ -90,10 +90,10 @@ Class Pengeluaran_lain extends CI_Controller{
             $data = array(
                 'tanggal' => $this->input->post('tanggal'),
                 'judul_pengeluaran_lain' => $this->input->post('judul_pengeluaran_lain'),
-                'jumlah' => $this->input->post('Jumlah'),
+                'jumlah' => $this->input->post('jumlah'),
                 'keterangan' => $this->input->post('keterangan')
             );
-            if($this->M_pengeluaran_lain->updateBahanBaku($where,$data)==TRUE){
+            if($this->M_pengeluaran_lain->updatePengeluaranLain($where,$data)==TRUE){
                 redirect('pengeluaran_lain');
             }else{
                 redirect('test');

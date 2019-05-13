@@ -140,14 +140,15 @@
                                     <input type="text" name="judul_pengeluaran_lain" class="form-control" placeholder="Masukkan Judul Pengeluaran Lain" required>
                                 </div>
                             </div>
+                            </div><div class="row">
                             <div class="col-md-6">
                                 <div class="form-group-inner">
                                         <label for="" class="pull-left">Jumlah</label>
                                         <input type="number" name="jumlah" class="form-control" placeholder="Masukkan Jumlah">
                                 </div>
                             </div>
-                        </div>
-                        <div class="row">
+                        
+                        
                             <div class="col-md-6">
                                 <div class="form-group-inner">
                                         <label for="" class="pull-left">Keterangan</label>

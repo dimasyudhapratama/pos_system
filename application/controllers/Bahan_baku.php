@@ -64,6 +64,7 @@ Class Bahan_baku extends CI_Controller{
         $where = array(
             'id_bahan_baku' => $this->input->post('id_bahan_baku')
         );
+        $data['kategori_bahan_baku'] = $this->M_bahan_baku->getKategoriBahanBaku();
         $data['bahan_baku'] = $this->M_bahan_baku->get1BahanBaku($where);
         $this->load->view("backend/bahan_baku/edit-bahan_baku",$data);
     }
@@ -120,6 +121,7 @@ Class Bahan_baku extends CI_Controller{
         );
         if($this->M_bahan_baku->deleteBahanBaku($where)==TRUE){
             redirect('bahan_baku');
+     
         }else{
             redirect('test');
         }

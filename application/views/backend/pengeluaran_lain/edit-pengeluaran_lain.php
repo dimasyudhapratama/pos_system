@@ -1,6 +1,6 @@
 <div class="modal-dialog">
     <div class="modal-content">
-        <form action="<?php echo base_url()."index.php/bahan_baku/update" ?>" method="post">
+        <form action="<?php echo base_url()."index.php/pengeluaran_lain/update" ?>" method="post">
             <div class="modal-header header-color-modal bg-color-1">
                 <h4 class="modal-title">Edit Data</h4>
                 <div class="modal-close-area modal-close-df">
@@ -10,34 +10,37 @@
             <div class="modal-body">
                 <div class="row">
                     <?php
-                    foreach($bahan_baku as $c){
+                    foreach($pengeluaran_lain as $c){
                     ?>
-                    <input type="hidden" name="id_bahan_baku" id="id_bahan_baku" value="<?php echo $c->id_bahan_baku; ?>">
+                    <input type="hidden" name="id_pengeluaran_lain" id="id_pengeluaran_lain" value="<?php echo $c->id_pengeluaran_lain; ?>">
+                    <div class="row">
+                        <div class="col-md-6">
+                                <div class="form-group-inner">
+                                        <label for="" class="pull-left">Tanggal</label>
+                                        <input type="date" name="tanggal" class="form-control" placeholder="Masukkan Tanggal" required value="<?php echo $c->tanggal ?>">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group-inner">
+                                    <label for="" class="pull-left">Judul</label>
+                                    <input type="text" name="judul_pengeluaran_lain" class="form-control" placeholder="Masukkan Judul Pengeluaran Lain" required value="<?php echo $c->judul_pengeluaran_lain ?>">
+                                </div>
+                            </div>
+                            </div>
+                            <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group-inner">
+                                        <label for="" class="pull-left">Jumlah</label>
+                                        <input type="number" name="jumlah" class="form-control" placeholder="Masukkan Jumlah" value="<?php echo $c->jumlah ?>">
+                                </div>
+                            </div>
                     <div class="col-md-6">
                         <div class="form-group-inner">
-                                <label for="" class="pull-left">ID Kategori Bahan Baku</label>
-                                <input type="text" name="id_kategori_bahan_baku" class="form-control" placeholder="Masukkan ID Kategori Bahan baku" value="<?php echo $c->id_kategori_bahan_baku ?>">
+                                <label for="" class="pull-left">keterangan</label>
+                                <textarea name="keterangan" class="form-control" placeholder="Masukkan keterangan" ><?php echo $c->keterangan ?></textarea>
                         </div>
                     </div>
-                    <div class="col-md-6">
-                        <div class="form-group-inner">
-                                <label for="" class="pull-left">Satuan</label>
-                                <input type="text" name="satuan" class="form-control" placeholder="Masukkan Satuan" value="<?php echo $c->satuan ?>">
-                        </div>
                     </div>
-                    <div class="col-md-6">
-                        <div class="form-group-inner">
-                                <label for="" class="pull-left">Stok</label>
-                                <input type="text" name="stok" class="form-control" placeholder="Masukkan Stok" value="<?php echo $c->stok ?>">
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="form-group-inner">
-                                <label for="" class="pull-left">Limit Stok</label>
-                                <input type="text" name="limit_stok" class="form-control" placeholder="Masukkan Limit Stok" value="<?php echo $c->limit_stok ?>">
-                        </div>
-                    </div>
-
                     <?php } ?>
                 </div>
             </div>

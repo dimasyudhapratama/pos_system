@@ -163,7 +163,7 @@
                             <div class="col-md-6">
                                 <div class="form-group-inner">
                                         <label for="" class="pull-left">Stok</label>
-                                        <input type="text" name="stok" class="form-control" placeholder="Masukkan Stok">
+                                        <input type="number" name="stok" class="form-control" placeholder="Masukkan Stok">
                                 </div>
                             </div>
                         </div>
@@ -171,7 +171,7 @@
                             <div class="col-md-6">
                                 <div class="form-group-inner">
                                         <label for="" class="pull-left">Limit stok</label>
-                                        <input type="text" name="limit_stok" class="form-control" placeholder="Masukkan Limit Stok">
+                                        <input type="number" name="limit_stok" class="form-control" placeholder="Masukkan Limit Stok">
                                 </div>
                             </div>
                         </div>

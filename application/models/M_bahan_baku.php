@@ -3,7 +3,7 @@ defined("BASEPATH") or die("No Direct Access Allowed");
 
 Class M_bahan_baku extends CI_Model{
     private $_table = 'bahan_baku';
-    function getKategoribahanbaku()
+    function getKategoriBahanBaku()
     {
         return $this->db->get('kategori_bahan_baku')->result();
     }

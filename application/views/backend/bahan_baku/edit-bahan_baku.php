@@ -15,9 +15,25 @@
                     <input type="hidden" name="id_bahan_baku" id="id_bahan_baku" value="<?php echo $c->id_bahan_baku; ?>">
                     <div class="col-md-6">
                         <div class="form-group-inner">
-                                <label for="" class="pull-left">ID Kategori Bahan Baku</label>
-                                <input type="text" name="id_kategori_bahan_baku" class="form-control" placeholder="Masukkan ID Kategori Bahan baku" value="<?php echo $c->id_kategori_bahan_baku ?>">
+                            <label for="" class="pull-left">Kategori Bahan Baku</label>
+                            <select class="form-control" name="id_kategori_bahan_baku" >
+                                <option value="">Pilih Disini</option>
+                                    <?php 
+                                    foreach ($kategori_bahan_baku as $data2) {
+                                        $sel = $data2->id_kategori_bahan_baku==$c->id_kategori_bahan_baku ? "selected" : "";
+                                    ?>
+                                    <option value="<?php echo $data2->id_kategori_bahan_baku ?>" <?php echo $sel ?>> <?php echo $data2->nama_kategori_bahan_baku   ?></option>        
+                                    <?php 
+                                    }
+                                    ?>
+                            </select>
                         </div>
+                    </div>
+                    <div class="col-md-6">
+                                <div class="form-group-inner">
+                                    <label for="" class="pull-left">Nama Bahan Baku</label>
+                                    <input type="text" name="nama_bahan_baku" class="form-control" placeholder="Masukkan Nama Bahan Baku" required value="<?php echo $c->nama_bahan_baku ?>">
+                                </div>
                     </div>
                     <div class="col-md-6">
                         <div class="form-group-inner">
@@ -28,13 +44,13 @@
                     <div class="col-md-6">
                         <div class="form-group-inner">
                                 <label for="" class="pull-left">Stok</label>
-                                <input type="text" name="stok" class="form-control" placeholder="Masukkan Stok" value="<?php echo $c->stok ?>">
+                                <input type="number" name="stok" class="form-control" placeholder="Masukkan Stok" value="<?php echo $c->stok ?>">
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="form-group-inner">
                                 <label for="" class="pull-left">Limit Stok</label>
-                                <input type="text" name="limit_stok" class="form-control" placeholder="Masukkan Limit Stok" value="<?php echo $c->limit_stok ?>">
+                                <input type="number" name="limit_stok" class="form-control" placeholder="Masukkan Limit Stok" value="<?php echo $c->limit_stok ?>">
                         </div>
                     </div>
 
