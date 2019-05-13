@@ -7,12 +7,11 @@ Class M_produk extends CI_Model{
         return $this->db->get('kategori_produk')->result();
     }
     function getproduk(){
-    // return $this->db->get($this->_table)->result();
-    $this->db->select('*');
-    $this->db->from('produk p,kategori_produk kp');
-    $where = "kp.id_kategori_produk=p.id_kategori_produk";
-    $this->db->where($where);
-    return $this->db->get()->result();
+        $this->db->select('*');
+        $this->db->from('produk p,kategori_produk kp');
+        $where = "kp.id_kategori_produk=p.id_kategori_produk";
+        $this->db->where($where);
+        return $this->db->get()->result();
       }
     function get1produk($where){
         return $this->db->get_where($this->_table,$where)->result();

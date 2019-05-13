@@ -129,6 +129,7 @@
                                 <div class="form-group-inner">
                                     <label for="" class="pull-left">Kategori Produk</label>
                                     <select class="form-control" name="id_kategori_produk">
+                                        <option value="">---Pilih---</option>
                                         <?php 
                                         foreach ($kategori as $data) {
                                         ?>
@@ -157,8 +158,9 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group-inner">
-                                   <label for="" class="pull-left">Tipe Stock</label>
-                                   <select name="tipe_stok" class="form-control">
+                                <label for="" class="pull-left">Tipe Stock</label>
+                                <select name="tipe_stok" class="form-control">
+                                <option>---pilih---</option>
                                 <option value="Produk Jadi">Produk Jadi</option>
                                 <option value="Produk Olahan">Produk Olahan</option>
                                 
@@ -168,21 +170,22 @@
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group-inner">
-                                        <label for="" class="pull-left">Stock</label>
-                                        <input type="text" name="stok" class="form-control" placeholder="stock">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="form-group-inner">
                                 <label for="" class="pull-left">Metode Tracking</label>
-                                <select name="metode_tracking" class="form-control" required="">
+                                <select name="metode_tracking" class="form-control showHide" data-target="#hideStockLimit" required="">
+                                    <option value="">---Pilih---</option>
                                     <option value="1">Berdasarkan Produk</option>
                                     <option value="2">Berdasarkan Bahan Baku</option>
                                 </select>
                                 </div>
                             </div>
+                        </div>
+                        <div class="row  toHide" id="hideStockLimit">
+                        <div class="col-md-6">
+                            <div class="form-group-inner">
+                                <label for="" class="pull-left">Stock</label>
+                                <input type="text" name="stok" class="form-control" placeholder="stock">
+                            </div>
+                        </div>
                             <div class="col-md-6">
                                 <div class="form-group-inner">
                                     <label for="" class="pull-left">Limit Stok</label>
@@ -229,4 +232,4 @@
         });
     }
 </script>
-                           
+                        

@@ -96,5 +96,16 @@
         scrollSpeed: 900,
         animation: 'fade'
     }); 	   
- 
+	$(".toHide").hide()
+	$(".showHide").change(function(){
+		var thisVal = $(this).val()
+		var target = $(this).data("target")
+		if(thisVal==""){
+			$(target).hide()
+		}
+		else{
+			$(target).show()
+		}
+	})
+
 })(jQuery); 

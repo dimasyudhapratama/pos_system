@@ -150,10 +150,8 @@
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group-inner">
-                                    <div class='input-group date' id='datepicker1'>
                                         <label for="" class="pull-left">Tanggal</label>
                                         <input type="date" name="tanggal" class="form-control" placeholder="Masukkan Tanggal" required>
-                                    </div>
                                 </div>
                             </div>
                     </div>
@@ -163,7 +161,7 @@
                         <input class="btn btn-sm btn-primary" type="submit" value="Simpan">
                     </div>
                 </form> 
-            </div>
+            </div> 
         </div>
     </div>
     <div id="modaledit" class="modal modal-edu-general default-popup-PrimaryModal fade" role="dialog">
