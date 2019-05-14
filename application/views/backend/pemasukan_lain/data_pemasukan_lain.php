@@ -59,7 +59,7 @@
                                 ?>
                                 <tr>
                                    
-                                    <td><?php echo $c->id_pemasukan_lain; ?></td>
+                                    <td><?php echo $no++; ?></td>
                                     <td><?php echo $c->judul_pemasukan_lain; ?></td>
                                     <td><?php echo $c->jumlah; ?></td>
                                     <td><?php echo $c->keterangan; ?></td>
