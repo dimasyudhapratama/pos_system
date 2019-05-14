@@ -106,6 +106,9 @@
                 padding-left: 0;
             }
         }
+        .margin-btm-10{
+            margin-bottom:10px;
+        }
     </style>
     
 </head>
@@ -131,15 +134,15 @@
                             </a>
                         </li>
                         <li>
-                            <a title="Pemasokan" href="<?php echo base_url().'index.php/pemasokan'?>" aria-expanded="false">
-                                <span class="educate-icon educate-event icon-wrap sub-icon-mg" aria-hidden="true"></span> 
-                                <span class="mini-click-non">Pemasokan</span>
-                            </a>
-                        </li>
-                        <li>
                             <a title="Penjualan" href="<?php echo base_url().'index.php/penjualan'?>" aria-expanded="false">
                                 <span class="educate-icon educate-event icon-wrap sub-icon-mg" aria-hidden="true"></span> 
                                 <span class="mini-click-non">Penjualan</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a title="Pemasokan" href="<?php echo base_url().'index.php/pemasokan'?>" aria-expanded="false">
+                                <span class="educate-icon educate-event icon-wrap sub-icon-mg" aria-hidden="true"></span> 
+                                <span class="mini-click-non">Pemasokan</span>
                             </a>
                         </li>
                         <li>
