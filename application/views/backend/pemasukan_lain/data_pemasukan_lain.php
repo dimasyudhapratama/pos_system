@@ -44,7 +44,7 @@
                         <table class="table">
                             <thead>
                                 <tr style="background-color:#EEEEEE">
-                                    <th>ID</th>
+                                    <th>#</th>
                                     <th>Judul Pemasukan Lain</th>
                                     <th>Jumlah</th>
                                     <th>Keterangan</th>
@@ -58,7 +58,6 @@
                                 foreach($dd as $c){ 
                                 ?>
                                 <tr>
-                                   
                                     <td><?php echo $no++; ?></td>
                                     <td><?php echo $c->judul_pemasukan_lain; ?></td>
                                     <td><?php echo $c->jumlah; ?></td>
@@ -72,7 +71,8 @@
                                             </button>
                                             <ul class="dropdown-menu" role="menu">
                                                 <!-- <li><a class="click-edit" href="#" id="<?php echo $c->id_pemasukan_lain; ?>">Edit</a></li> -->
-                                                <li><a onclick="edit(<?php echo $c->id_pemasukan_lain; ?>)" data-toggle="modal" href="<?php echo base_url().'index.php/pemasukan_lain/update/'.$c->id_pemasukan_lain ?>">Edit</a></li>
+                                                
+                                                <li><a onclick="edit(<?php echo $c->id_pemasukan_lain; ?>)" data-toggle="modal" href="#">Edit</a></li>
                                                 <li><a onclick="return confirm('Anda Yakin Ingin Menghapus Data?')" href="<?php echo base_url().'index.php/pemasukan_lain/delete/'.$c->id_pemasukan_lain ?>">Delete</a></li>
                                             </ul>
                                         </div>
@@ -137,7 +137,7 @@
                             <div class="col-md-6">
                                 <div class="form-group-inner">
                                         <label for="" class="pull-left">Jumlah</label>
-                                        <input type="text" name="jumlah" class="form-control" placeholder="Masukkan Jumlah">
+                                        <input type="number" name="jumlah" class="form-control" placeholder="Masukkan Jumlah">
                                 </div>
                             </div>
                         </div>
@@ -145,7 +145,7 @@
                             <div class="col-md-6">
                                 <div class="form-group-inner">
                                         <label for="" class="pull-left">Keterangan</label>
-                                        <input type="text" name="keterangan" class="form-control" placeholder="Masukkan Keterangan">
+                                        <textarea name="keterangan" class="form-control" placeholder="Masukkan Keterangan"> </textarea>
                                 </div>
                             </div>
                             <div class="col-md-6">

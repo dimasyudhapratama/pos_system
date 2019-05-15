@@ -14,27 +14,29 @@
                     ?>
                     <input type="hidden" name="id_pemasukan_lain" id="id_pemasukan_lain" value="<?php echo $c->id_pemasukan_lain; ?>">
                     <div class="col-md-6">
-                        <div class="form-group-inner">
-                            <label for="" class="pull-left">Judul Pemasukan Lain</label>
-                            <input type="text" name="judul_pemasukan_lain" class="form-control" placeholder="Masukkan Judul Pemasukan Lain" value="<?php echo $c->id_pemasukan_lain; ?>" required>
-                        </div>
-                    </div>
+                                <div class="form-group-inner">
+                                        <label for="" class="pull-left">Tanggal</label>
+                                        <input type="date" name="tanggal" class="form-control" placeholder="Masukkan Tanggal" required value="<?php echo $c->tanggal ?>">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group-inner">
+                                    <label for="" class="pull-left">Judul</label>
+                                    <input type="text" name="judul_pemasukan_lain" class="form-control" placeholder="Masukkan Judul pemasukan Lain" required value="<?php echo $c->judul_pemasukan_lain ?>">
+                                </div>
+                            </div>
+                            </div>
+                            <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group-inner">
+                                        <label for="" class="pull-left">Jumlah</label>
+                                        <input type="number" name="jumlah" class="form-control" placeholder="Masukkan Jumlah" value="<?php echo $c->jumlah ?>">
+                                </div>
+                            </div>
                     <div class="col-md-6">
                         <div class="form-group-inner">
-                                <label for="" class="pull-left">Jumlah</label>
-                                <input type="text" name="jumlah" class="form-control" placeholder="Masukkan Jumlah" value="<?php echo $c->jumlah?>">
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="form-group-inner">
-                                <label for="" class="pull-left">Keterangan</label>
-                                <input type="text" name="keterangan" class="form-control" placeholder="Masukkan keterangan" value="<?php echo $c->keterangan ?>">
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="form-group-inner">
-                                <label for="" class="pull-left">Tanggal</label>
-                                <input type="text" name="tanggal" class="form-control" placeholder="Masukkan tanggal anda" value="<?php echo $c->tanggal ?>">
+                                <label for="" class="pull-left">keterangan</label>
+                                <textarea name="keterangan" class="form-control" placeholder="Masukkan keterangan" ><?php echo $c->keterangan ?></textarea>
                         </div>
                     </div>
 

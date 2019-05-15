@@ -1,8 +1,8 @@
 <?php
 defined("BASEPATH") or die("No Direct Access Allowed");
-
 Class M_pengeluaran_lain extends CI_Model{
     private $_table = 'pengeluaran_lain';
+ 
     function getPengeluaranLain(){
         return $this->db->get($this->_table)->result();
     }
@@ -18,7 +18,7 @@ Class M_pengeluaran_lain extends CI_Model{
     }
     function updatePengeluaranLain($where,$data){
         $this->db->where($where);
-        if($this->db->update($this->_table,$data)==TRUE){
+        if($this->db->update($this->_table,$data) == TRUE){
             return TRUE;
         }else{
             return FALSE;
@@ -26,7 +26,7 @@ Class M_pengeluaran_lain extends CI_Model{
     }
     function deletePengeluaranLain($where){
         $this->db->where($where);
-        if($this->db->delete($this->_table)==TRUE){
+        if($this->db->delete($this->_table) == TRUE){
             return TRUE;
         }else{
             return FALSE;
