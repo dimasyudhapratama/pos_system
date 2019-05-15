@@ -195,8 +195,9 @@
 								   <span class="mini-click-non">Keuangan</span>
 								</a>
                             <ul class="submenu-angle" aria-expanded="true">
-                                <li><a title="Rekap Pemasukan" href="<?php echo base_url().'index.php/rekap_pemasukan' ?>"><span class="mini-sub-pro">Rekap Pemasukan</span></a></li>
-                                <li><a title="Rekap Pengeluaran" href="<?php echo base_url().'index.php/rekap_pengeluaran' ?>"><span class="mini-sub-pro">Rekap Pengeluaran</span></a></li>
+                                <li><a title="Rekap Keuangan" href="<?php echo base_url().'index.php/rekap_keuangan' ?>"><span class="mini-sub-pro">Rekap Keuangan</span></a></li>
+                                <!-- <li><a title="Rekap Pemasukan" href="<?php echo base_url().'index.php/keuangan_pemasukan' ?>"><span class="mini-sub-pro">Rekap Pemasukan</span></a></li>
+                                <li><a title="Rekap Pengeluaran" href="<?php echo base_url().'index.php/keuangan_pengeluaran' ?>"><span class="mini-sub-pro">Rekap Pengeluaran</span></a></li> -->
                                 <li><a title="Pemasukan Lain" href="<?php echo base_url().'index.php/pemasukan_lain' ?>"><span class="mini-sub-pro">Pemasukan Lain</span></a></li>
                                 <li><a title="Pengeluaran Lain" href="<?php echo base_url().'index.php/pengeluaran_lain' ?>"><span class="mini-sub-pro">Pengeluaran Lain</span></a></li>
                                 

@@ -1,4 +1,15 @@
 <script>
+function pelunasan(id){
+    $.ajax({
+        url : "<?php echo base_url().'index.php/pemasokan/pelunasan' ?>",
+        type : "POST",
+        data : {id : id},
+        success : function(ajaxData){
+            $("#modal-popup").html(ajaxData);
+            $("#modal-popup").modal('show',{backdrop : 'true'});
+        }
+    });
+}
 function ubahStatus(id){
     $.ajax({
         url : "<?php echo base_url().'index.php/pemasokan/ubahStatus' ?>",
@@ -172,7 +183,8 @@ function ubahStatus(id){
                                                                 <?php if($c->status_pasok == 1 || $c->status_pasok ==2){ ?>
                                                                 <li><a onclick="ubahStatus(<?php echo $c->id_pemasokan; ?>)" data-toggle="modal" href="#">Ubah Status</a></li>
                                                                 <?php } ?>
-                                                                <li><a onclick="return confirm('Anda Yakin Ingin Menghapus Data?')" href="<?php echo base_url().'index.php/kategori_produk/delete/'.$c->id_pemasokan; ?>">Delete</a></li>
+                                                                <?php if($c->status_bayar == 1){ ?><li><a onclick="pelunasan(<?php echo $c->id_pemasokan; ?>)" data-toggle="modal" href="#">Pelunasan</a></li> <?php } ?>
+                                                                <!-- <li><a onclick="return confirm('Anda Yakin Ingin Menghapus Data?')" href="<?php echo base_url().'index.php/kategori_produk/delete/'.$c->id_pemasokan; ?>">Delete</a></li> -->
                                                             </ul>
                                                         </div>
                                                     </td>

@@ -25,6 +25,12 @@ Class M_pemasokan extends CI_Model{
     function getDetailPemasokan($where){
         return $this->db->get_where($this->v_detail_pemasokan,$where)->result();
     }
+    function getDetailPemasokanBahanBaku($where){
+        return $this->db->get_where($this->tbl_detail_pemasokan_bahan_baku,$where)->result();
+    }
+    function getDetailPemasokanProduk($where){
+        return $this->db->get_where($this->tbl_detail_pemasokan_produk_jadi,$where)->result();
+    }
     function inputPemasokan($data){
         if($this->db->insert($this->_table,$data)){
             return TRUE;
@@ -37,5 +43,9 @@ Class M_pemasokan extends CI_Model{
     }
     function inputBahanBaku($data){
         $this->db->insert($this->tbl_detail_pemasokan_bahan_baku,$data);
+    }
+    function updatePemasokan($where,$data){
+        $this->db->where($where);
+        $this->db->update($this->_table,$data);
     }
 }
