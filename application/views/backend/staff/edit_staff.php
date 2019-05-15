@@ -31,7 +31,6 @@
                         <div class="form-group-inner">
                                 <label for="" class="pull-left">Nama_Roles</label>
                                 <select class="form-control" name="id_roles">
-                                    <option value="">---pilih---</option>
                                     <?php 
                                     foreach ($hak_akses as $ha) {?>
 
