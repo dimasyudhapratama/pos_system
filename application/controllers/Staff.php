@@ -61,39 +61,50 @@ Class Staff extends CI_Controller{
     }
     function gantipassword(){
         $data['id'] = $this->input->post('id_staff');
+        $where = array(
+            'id_staff' => $this->input->post('id_staff')
+        );
+        $data['staff'] = $this->M_staff->get1staff($where);
         $this->load->view("backend/staff/ganti_password",$data);
     }
     function updatepassword(){
         $config = array(
             array(
-            'password' => 'password_lama',
+            'field' => 'password_lama',
             'label' => 'Password_Lama',
             'rules' => 'required'
             ),
             array(
-            'password' => 'password_baru',
+            'field' => 'password_baru',
             'label' => 'password_baru',
             'rules' => 'required'
             ),
-            
+            array(
+            'field' => 'confirm_password',
+            'label' => 'confirm_password',
+            'rules' => 'required'
+            )
         );
 
-        $where = array(
-            'id_staff' => $this->input->post('id_staff')
-        );
-        $staff = $this->M_staff->get1staff($where);
-        foreach($staff as $row){
-            $password = $row->password;
+        $password_sekarang = $this->input->post('password_sekarang');
+        $password_lama     = $this->input->post('password_lama');
+        $password_baru     =  $this->input->post('password_baru');
+        $confirm_password     = $this->input->post('confirm_password');
+
+
+        if(password_verify($password_lama, $password_sekarang) && $password_baru == $confirm_password)
+        {
+            $where = array('id_staff' => $this->input->post('id_staff'));
+            $data = array(
+                'password' => password_hash($password_baru, PASSWORD_DEFAULT)
+            );
+            $this->M_staff->updatestaff($where,$data);
+            redirect('staff');
+        } 
+        else {
+            echo "error";
         }
-        if(password_verify($this->input->post('password_lama'), $password)){
-            if($this->input->post('password_baru') == $this->input->post('confirm_password')){
-                $data = array(
-                    'password' => password_hash($this->input->post('password'), PASSWORD_DEFAULT)
-                    
-                );
-                $this->M_staff->updatestaff($where,$data);
-            }
-        }
+
 
     }
 

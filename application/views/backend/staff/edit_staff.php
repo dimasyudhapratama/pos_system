@@ -19,17 +19,10 @@
                             <input type="text" name="nama_terang" class="form-control" placeholder="Masukkan Nama Staff" value="<?php echo $c->nama_terang; ?>" required>
                         </div>
                     </div>
-                    <div class="col-md-6">
-                        <div class="form-group-inner">
-                            <label for="" class="pull-left">Username</label>
-                            <input type="text" name="username" class="form-control" placeholder="Masukkan Username" value="<?php echo $c->username?>">
-                           
-                        </div>
-                    </div>
                     
                     <div class="col-md-6">
                         <div class="form-group-inner">
-                                <label for="" class="pull-left">Nama_Roles</label>
+                                <label for="" class="pull-left">Nama Roles</label>
                                 <select class="form-control" name="id_roles">
                                     <?php 
                                     foreach ($hak_akses as $ha) {?>
@@ -38,6 +31,13 @@
                                     <?php } ?>
                                      ?>
                                 </select>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group-inner">
+                            <label for="" class="pull-left">Username</label>
+                            <input type="text" name="username" class="form-control" placeholder="Masukkan Username" value="<?php echo $c->username?>">
+                           
                         </div>
                     </div>
                    
