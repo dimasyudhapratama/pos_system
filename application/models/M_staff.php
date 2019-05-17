@@ -12,6 +12,9 @@ Class M_staff extends CI_Model{
     function get1staff($where){
         return $this->db->get_where($this->_table,$where)->result();
     }
+    function countStaff($where){
+        return $this->db->get_where($this->_table,$where)->num_rows();
+    }
     function addstaff($data){
     	if($this->db->insert($this->_table,$data) == TRUE){
     		return TRUE;
