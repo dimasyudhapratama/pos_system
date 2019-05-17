@@ -185,7 +185,7 @@
 								</a>
                             <ul class="submenu-angle" aria-expanded="true">
                                 <li><a title="Pengaturan Hak Akses" href="<?php echo base_url().'index.php/hak_akses' ?>"><span class="mini-sub-pro">Hak Akses</span></a></li>
-                                <li><a title="List Staff" href="<?php echo base_url().'index.php/list_staff' ?>"><span class="mini-sub-pro">List Staff</span></a></li>
+                                <li><a title="List Staff" href="<?php echo base_url().'index.php/staff' ?>"><span class="mini-sub-pro">List Staff</span></a></li>
                                 
                             </ul>
                         </li>
@@ -251,19 +251,11 @@
                                                 <li class="nav-item">
                                                     <a href="#" data-toggle="dropdown" role="button" aria-expanded="false" class="nav-link dropdown-toggle">
 															<img src="<?php echo base_url() ?>assets/backend/img/product/pro4.jpg" alt="" />
-															<span class="admin-name">Prof.Anderson</span>
+															<span class="admin-name"><?php echo "TES Nama" ?></span>
 															<i class="fa fa-angle-down edu-icon edu-down-arrow"></i>
 														</a>
                                                     <ul role="menu" class="dropdown-header-top author-log dropdown-menu animated zoomIn">
-                                                        <li><a href="#"><span class="edu-icon edu-home-admin author-log-ic"></span>My Account</a>
-                                                        </li>
-                                                        <li><a href="#"><span class="edu-icon edu-user-rounded author-log-ic"></span>My Profile</a>
-                                                        </li>
-                                                        <li><a href="#"><span class="edu-icon edu-money author-log-ic"></span>User Billing</a>
-                                                        </li>
-                                                        <li><a href="#"><span class="edu-icon edu-settings author-log-ic"></span>Settings</a>
-                                                        </li>
-                                                        <li><a href="#"><span class="edu-icon edu-locked author-log-ic"></span>Log Out</a>
+                                                        <li><a href="<?php echo base_url().'login/logout' ?>"><span class="edu-icon edu-locked author-log-ic"></span>Log Out</a>
                                                         </li>
                                                     </ul>
                                                 </li>
