@@ -24,6 +24,17 @@
             }
         });
     }
+     function re_stock(id){
+        $.ajax({
+            url: "<?php echo base_url().'index.php/bahan_baku/re_stock'; ?>",
+            type: "POST",
+            data : {id_bahan_baku: id},
+            success: function (ajaxData){
+                $("#modal_re_stock").html(ajaxData);
+                $("#modal_re_stock").modal('show',{backdrop: 'true'});
+            }
+        });
+    }
 </script>
 <div class="container-fluid">
     <div class="row">
@@ -46,7 +57,6 @@
                             <thead>
                                 <tr style="background-color:#EEEEEE">
                                     <th>#</th>
-                                    <th>ID Bahan Baku</th>
                                     <th>Nama Bahan Baku</th>
                                     <th>Kategori Bahan Baku</th>
                                     <th>Satuan</th>
@@ -62,7 +72,6 @@
                                 ?>
                                 <tr>
                                     <td><?php echo $no++ ?></td>
-                                    <td><?php echo $c->id_bahan_baku; ?></td>
                                     <td><?php echo $c->nama_bahan_baku; ?></td>
                                     <td><?php echo $c->nama_kategori_bahan_baku; ?></td>
                                     <td><?php echo $c->satuan; ?></td>
@@ -76,6 +85,7 @@
                                             </button>
                                             <ul class="dropdown-menu" role="menu">
                                                 <!-- <li><a class="click-edit" href="#" id="<?php echo $c->id_bahan_baku; ?>">Edit</a></li> -->
+                                                <li><a onclick="re_stock(<?php echo $c->id_bahan_baku; ?>)" data-toggle="modal" href="#">Re-Stok</a></li>
                                                 <li><a onclick="edit(<?php echo $c->id_bahan_baku; ?>)" data-toggle="modal" href="#">Edit</a></li>
                                                 <li><a onclick="return confirm('Anda Yakin Ingin Menghapus Data?')" href="<?php echo base_url().'index.php/bahan_baku/delete/'.$c->id_bahan_baku ?>">Delete</a></li>
                                             </ul>
@@ -217,5 +227,7 @@
         </div>
     </div>
     <div id="modaledit" class="modal modal-edu-general default-popup-PrimaryModal fade" role="dialog">
+    </div>
+     <div id="modal_re_stock" class="modal modal-edu-general default-popup-PrimaryModal fade" role="dialog">
     </div>
 </div>
