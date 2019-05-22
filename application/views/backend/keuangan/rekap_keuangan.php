@@ -31,10 +31,11 @@
                                 <?php 
                                 $no = 1;
                                 foreach($keuangan as $row){ 
+                                    $createDate = date_create($row->tanggal);
                                 ?>
                                 <tr>
                                     <td><?php echo $no++ ?></td>
-                                    <td><?php echo $row->tanggal; ?></td>
+                                    <td><?php echo date_format($createDate,"d-m-Y H:i:s"); ?></td>
                                     <td><?php if($row->debit != ''){ echo "Rp.".number_format($row->debit,'2',',','.'); }?></td>
                                     <td><?php if($row->kredit != ''){echo "Rp.".number_format($row->kredit,'2',',','.'); }?></td>
                                     <td><?php echo $row->detail_info; ?></td>

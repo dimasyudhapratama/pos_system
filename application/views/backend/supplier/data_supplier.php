@@ -1,18 +1,8 @@
 
 <script type="text/javascript">
-    // $(document).ready(function(){
-    //     $("#form-element").hide();
-    // });
-    // function openForm(){
-    //     $("#table-element").addClass("col-lg-8 col-md-8 col-sm-8");
-    //     $("#table-element").removeClass("col-lg-12 col-md-12 col-sm-12");
-    //     $("#form-element").show();
-    // }
-    // function closeForm(){
-    //     $("#table-element").removeClass("col-lg-8 col-md-8 col-sm-8");
-    //     $("#table-element").addClass("col-lg-12 col-md-12 col-sm-12");
-    //     $("#form-element").hide();
-    // }
+    $(document).ready(function(){
+        $("#primary-table").DataTable();
+    });
     function edit(id){
         $.ajax({
             url: "<?php echo base_url().'index.php/supplier/edit'; ?>",
@@ -42,7 +32,7 @@
                 </div>
                 <div class="sparkline8-graph">
                     <div class="static-table-list">
-                        <table class="table">
+                        <table class="table" id="primary-table">
                             <thead>
                                 <tr style="background-color:#EEEEEE">
                                     <th>#</th>

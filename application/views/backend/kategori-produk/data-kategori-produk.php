@@ -1,5 +1,7 @@
-
 <script type="text/javascript">
+    $(document).ready(function(){
+        $("#primary-table").DataTable();
+    })
     function edit(id){
         $.ajax({
             url: "<?php echo base_url().'index.php/kategori_produk/edit'; ?>",
@@ -28,7 +30,7 @@
                 </div>
                 <div class="sparkline8-graph">
                     <div class="static-table-list">
-                        <table class="table">
+                        <table class="table" id="primary-table">
                             <thead>
                                 <tr style="background-color:#EEEEEE">
                                     <th>#</th>

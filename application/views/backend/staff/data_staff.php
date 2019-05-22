@@ -1,4 +1,8 @@
-
+<script>
+    $(document).ready(function(){
+        $("#primary-table").DataTable();
+    });
+</script>
 <div class="container-fluid">
     <div class="row">
         <div id="table-element" class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
@@ -16,7 +20,7 @@
                 </div>
                 <div class="sparkline8-graph">
                     <div class="static-table-list">
-                        <table class="table">
+                        <table class="table" id="primary-table">
                             <thead>
                                 <tr style="background-color:#EEEEEE">
                                     <th>#</th>
