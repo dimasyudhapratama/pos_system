@@ -12,6 +12,13 @@ Class M_staff extends CI_Model{
     function get1staff($where){
         return $this->db->get_where($this->_table,$where)->result();
     }
+    function get1StaffWithRoles($where){
+        $this->db->select('*');
+        $this->db->from('staff');
+        $this->db->join('hak_akses','staff.id_roles = hak_akses.id_roles');
+        $this->db->where($where);
+        return $this->db->get()->result();
+    }
     function countStaff($where){
         return $this->db->get_where($this->_table,$where)->num_rows();
     }

@@ -3,7 +3,6 @@ defined("BASEPATH") or die("No Direct Access Allowed");
 Class Login extends CI_Controller{
     function __construct(){
         parent::__construct();
-        $this->load->model('M_login');
         $this->load->model('M_staff');
     }
     function index(){
@@ -30,19 +29,22 @@ Class Login extends CI_Controller{
                 'username' => $username
             );
             if($this->M_staff->countStaff($where) == 1){
-                $staff = $this->M_staff->get1Staff($where);
+                $staff = $this->M_staff->get1StaffWithRoles($where);
                 foreach($staff as $s){
                     $nama_terang = $s->nama_terang;
                     $dbpassword = $s->password;
+                    $permission = $s->permission;
+                    
                 }
                 if(password_verify($password,$dbpassword)){
-                    redirect('dashboard');
                     $login_data = array(
                         'username' => $username,
                         'nama_terang' => $nama_terang,
+                        'permission' => $permission,
                         '_login' => TRUE
                     );
                     $this->session->set_userdata($login_data);
+                    redirect('dashboard');
                 }else{
                     redirect('login');
                 }
