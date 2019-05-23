@@ -166,27 +166,7 @@
                             </div>
                             <div class="col-md-6">
                                  <div class="i-checks pull-left">
-                                    <label><input type="checkbox" name="permission[]" value="12"> <i></i> Laba Rugi </label>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                 <div class="i-checks pull-left">
-                                    <label><input type="checkbox" name="permission[]" value="13"> <i></i> Rekap Pemasukan </label>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                 <div class="i-checks pull-left">
-                                    <label><input type="checkbox" name="permission[]" value="14"> <i></i> Rekap Pengeluaran </label>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                 <div class="i-checks pull-left">
-                                    <label><input type="checkbox" name="permission[]" value="15"> <i></i> Pemasukan Lain </label>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                 <div class="i-checks pull-left">
-                                    <label><input type="checkbox" name="permission[]" value="16"> <i></i> Pengeluaran Lain </label>
+                                    <label><input type="checkbox" name="permission[]" value="12"> <i></i> Rekap Keuangan </label>
                                 </div>
                             </div>
                         </div>
