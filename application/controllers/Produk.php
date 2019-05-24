@@ -184,8 +184,14 @@ Class Produk extends CI_Controller{
             redirect('test');
         }
     }
-    function tampilgambar(){
-        $data['dd'] = $this->M_produk->getProduk();
-        $this->load->view("backend/master-template",$data);   
-    }
+        function tampilgambar(){
+        // $data['dd'] = $this->M_produk->getProduk();
+        // $this->load->view("backend/master-template",$data);   
+            $data['id'] = $this->input->post('id_produk');
+            $where = array(
+                'id_produk' => $this->input->post('id_produk')
+            );
+            $data['produk'] = $this->M_produk->get1produk($where);
+            $this->load->view("backend/produk/tampil_gambar",$data);
+        }
     }

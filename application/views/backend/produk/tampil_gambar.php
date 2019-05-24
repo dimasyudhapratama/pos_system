@@ -12,9 +12,9 @@
                     <?php
                     foreach($produk as $c){
                     ?>
-                    <div class="col-md-6">
+                    <div class="col-md-12">
                         <div class="form-group-inner">
-                            <label for="" class="pull-left">Photo</label>
+                            <center><label for="">Photo</label></center>
                             <img src="<?php echo base_url()."upload/produk/".$c->image_produk ?>">
                         </div>
                     </div>
