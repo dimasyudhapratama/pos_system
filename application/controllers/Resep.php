@@ -45,16 +45,20 @@ Class Resep extends CI_Controller{
                         'jumlah_bb' => $this->input->post('qty')[$i]
                     );
                     if($this->M_resep->addResep($data) == TRUE){
-                        echo "Sukses";
+                        $this->session->set_flashdata("input_success","<div class='alert alert-success'>
+                        <button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button>Data Berhasil Ditambahkan!!</div>");
                     }else{
-                        echo "Gagal";
+                        $this->session->set_flashdata("input_failed","<div class='alert alert-danger'>
+                <button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button>Data Gagal Ditambahkan!!</div>");
                     }
                 }
             }
-            redirect('resep');
         }else{
-            echo "Data Tidak Lengkap";
+            $gagal = validation_errors();
+            $this->session->set_flashdata("input_failed","<div class='alert alert-danger'>
+            <button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button>Data Gagal Ditambahkan!!<br>".$gagal."</div>");
         }
+        redirect('resep');
     }
     function edit(){
         $data['id'] = $this->input->post('id');
@@ -63,10 +67,6 @@ Class Resep extends CI_Controller{
         );
         $data['produk'] = $this->M_produk->get1Produk($where_p);
         $data['bahan_baku'] = $this->M_bahan_baku->getBahanBaku(); //Untuk Select 
-        // $where_bb = array(
-        //     'id_bahan_baku' => $data['id']
-        // );
-        // $data['bahan_baku1'] = $this->M_bahan_baku->get1BahanBaku($where_bb);
         $data['resep'] = $this->M_resep->get1ResepBahanBaku($data['id']);
         $this->load->view('backend/resep/edit-resep',$data);
     }
@@ -96,16 +96,22 @@ Class Resep extends CI_Controller{
                     );
                     $this->M_resep->addResep($data);
                 }
+                $this->session->set_flashdata("update_success","<div class='alert alert-success'>
+                <button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button>Data Berhasil Diubah!!</div>");
             }
-            redirect('resep');
         }else{
-            echo "Data Tidak Lengkap";
+            $this->session->set_flashdata("update_failed","<div class='alert alert-danger'>
+                <button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button>Data Gagal Diubah!!<br>".$gagal."</div>");
         }
+        redirect('resep');
     }
     function delete($id_produk){
         $where = array(
             'id_produk' => $id_produk
         );
         $this->M_resep->deleteResep($where);
+        $this->session->set_flashdata("delete_success","<div class='alert alert-success'>
+            <button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button>Data Berhasil Dihapus!!</div>");
+        redirect("resep");
     }
 }

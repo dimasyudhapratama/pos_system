@@ -19,6 +19,14 @@
                     </div>
                 </div>
                 <div class="sparkline8-graph">
+                    <?php
+                        echo $this->session->flashdata("input_success");
+                        echo $this->session->flashdata("input_failed");
+                        echo $this->session->flashdata("update_success");
+                        echo $this->session->flashdata("update_failed");
+                        echo $this->session->flashdata("delete_success");
+                        echo $this->session->flashdata("delete_failed");
+                    ?>
                     <div class="static-table-list">
                         <table class="table" id="primary-table">
                             <thead>
@@ -108,13 +116,13 @@
                             <div class="col-md-6">
                                 <div class="form-group-inner">
                                     <label for="" class="pull-left">Nama Terang</label>
-                                    <input type="text" name="nama_terang" class="form-control" placeholder="Masukkan Nama produk" required>
+                                    <input type="text" name="nama_terang" class="form-control" placeholder="Masukkan Nama " required>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group-inner">
                                     <label for="" class="pull-left">Username</label>
-                                    <input type="text" name="username" class="form-control" placeholder="masukkan username anda" required="">
+                                    <input type="text" name="username" class="form-control" placeholder="Masukkan username Anda" required="">
                                 </div>
                             </div>
                         </div>
@@ -136,7 +144,7 @@
                               <div class="col-md-6">
                                 <div class="form-group-inner">
                                         <label for="" class="pull-left">Password</label>
-                                        <input type="password" name="password" class="form-control" placeholder="masukkan password anda">
+                                        <input type="password" name="password" class="form-control" placeholder="Masukkan Password">
                                 </div>
                             </div>
                         </div>

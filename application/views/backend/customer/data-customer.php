@@ -30,7 +30,7 @@
                     </div>
                 </div>
                 <div class="sparkline8-graph">
-                <?php
+                    <?php
                         echo $this->session->flashdata("input_success");
                         echo $this->session->flashdata("input_failed");
                         echo $this->session->flashdata("update_success");

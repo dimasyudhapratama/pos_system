@@ -8,6 +8,19 @@
             locale: 'en'
         });
     });
+    $(document).ready(function () {
+        $("#filter_by").change(function(e) {
+            var m = $(this).val();
+            $.ajax({
+                url: "<?php echo base_url().'index.php/rekap_keuangan/getfilter' ?>",
+                type: "POST",
+                data : {filter_by: m,},
+                success: function (ajaxData){
+                    $(".filter-data").html(ajaxData);
+                }
+            });
+        });
+    });
 </script>
 <div class="container-fluid">
     <div class="row">
@@ -19,7 +32,7 @@
                             <h1>Rekap Keuangan</h1>
                         </div>
                         <div class="pull-right">
-                            <button type="button" class="btn btn-sm btn-primary" href="#" data-toggle="modal" data-target="#modaladd"><i class="fa fa-filter"></i> Filter</button>
+                            <button type="button" class="btn btn-sm btn-primary" href="#" data-toggle="modal" data-target="#modalfilter"><i class="fa fa-filter"></i> Filter</button>
                             <button type="button" class="btn btn-sm btn-primary" href="#" data-toggle="modal" data-target="#modaladd"><i class="fa fa-plus"></i> Tambah</button>
                         </div>
                         
@@ -114,6 +127,42 @@
                     <div class="modal-footer">
                         <input class="btn btn-sm btn-default" type="reset" value="Reset">
                         <input class="btn btn-sm btn-primary" type="submit" value="Simpan">
+                    </div>
+                </form> 
+            </div>
+        </div>
+    </div>
+    <div id="modalfilter" class="modal modal-edu-general default-popup-PrimaryModal fade" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <form action="<?php echo base_url()."index.php/rekap_keuangan" ?>" method="post">
+                    <div class="modal-header header-color-modal bg-color-1">
+                        <h4 class="modal-title">Filter</h4>
+                        <div class="modal-close-area modal-close-df">
+                            <a class="close" data-dismiss="modal" href="#"><i class="fa fa-close"></i></a>
+                        </div>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label class="pull-left">Filter Berdasarkan</label>
+                                    <select name="filter_by" id="filter_by" class="form-control" required="">
+                                        <option value="">--Pilih--</option>
+                                        <option value="date">Tanggal</option>
+                                        <option value="month">Bulan</option>
+                                        <option value="year">Tahun</option>
+                                        <option value="custom">Custom</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-12 filter-data">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <input class="btn btn-sm btn-default" type="reset" value="Reset">
+                        <input class="btn btn-sm btn-primary" type="submit" value="Tampilkan">
                     </div>
                 </form> 
             </div>

@@ -62,17 +62,6 @@
         $("#table-element").addClass("col-lg-12 col-md-12 col-sm-12");
         $("#formEdit-element").hide();
     }
-    // function edit(id){
-    //     $.ajax({
-    //         url: "<?php echo base_url().'index.php/customer/edit'; ?>",
-    //         type: "POST",
-    //         data : {id_customer: id},
-    //         success: function (ajaxData){
-    //             $("#modaledit").html(ajaxData);
-    //             $("#modaledit").modal('show',{backdrop: 'true'});
-    //         }
-    //     });
-    // }
 </script>
 
 <div class="container-fluid">
@@ -90,6 +79,14 @@
                     </div>
                 </div>
                 <div class="sparkline8-graph">
+                    <?php
+                        echo $this->session->flashdata("input_success");
+                        echo $this->session->flashdata("input_failed");
+                        echo $this->session->flashdata("update_success");
+                        echo $this->session->flashdata("update_failed");
+                        echo $this->session->flashdata("delete_success");
+                        echo $this->session->flashdata("delete_failed");
+                    ?>
                     <div class="static-table-list">
                         <table id="primary-table" class="table">
                             <thead>

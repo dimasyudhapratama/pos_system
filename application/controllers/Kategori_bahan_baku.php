@@ -26,12 +26,18 @@ Class Kategori_bahan_baku extends CI_Controller{
                 'nama_kategori_bahan_baku' => $this->input->post('nama_kategori')
             );
             if($this->M_kategori_bahan_baku->inputKategoriBahanBaku($data)){
-                redirect('kategori_bahan_baku');
+                $this->session->set_flashdata("input_success","<div class='alert alert-success'>
+                <button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button>Data Berhasil Ditambahkan!!</div>");
             }else{
-
+                $this->session->set_flashdata("input_failed","<div class='alert alert-danger'>
+                <button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button>Data Gagal Ditambahkan!!</div>");
             }
-
+        }else{
+            $gagal = validation_errors();
+            $this->session->set_flashdata("input_failed","<div class='alert alert-danger'>
+            <button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button>Data Gagal Ditambahkan!!<br>".$gagal."</div>"); 
         }
+        redirect('kategori_bahan_baku');
     }
     function edit(){
         $data['id'] = $this->input->post('id');
@@ -58,18 +64,27 @@ Class Kategori_bahan_baku extends CI_Controller{
                 'nama_kategori_bahan_baku' => $this->input->post('nama_kategori')
             );
             if($this->M_kategori_bahan_baku->updateKategoriBahanBaku($id,$data)){
-                redirect('kategori_bahan_baku');
+                $this->session->set_flashdata("update_success","<div class='alert alert-success'>
+                <button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button>Data Berhasil Diubah!!</div>"); 
             }else{
-
+                $this->session->set_flashdata("update_failed","<div class='alert alert-danger'>
+                <button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button>Data Gagal Diubah!!</div>");
             }
-
+        }else{
+            $gagal = validation_errors();
+            $this->session->set_flashdata("update_failed","<div class='alert alert-danger'>
+                <button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button>Data Gagal Diubah!!<br>".$gagal."</div>");
         }
+        redirect('kategori_bahan_baku');
     }
     function delete($id){
         if($this->M_kategori_bahan_baku->deleteKategoriBahanBaku($id)){
-            redirect('kategori_bahan_baku');
+            $this->session->set_flashdata("delete_success","<div class='alert alert-success'>
+            <button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button>Data Berhasil Dihapus!!</div>");
         }else{
-            
+            $this->session->set_flashdata("delete_failed","<div class='alert alert-danger'>
+            <button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button>Data Gagal Dihapus!!</div>"); 
         }
+        redirect('kategori_bahan_baku');
     }
 }

@@ -30,6 +30,14 @@
                     </div>
                 </div>
                 <div class="sparkline8-graph">
+                    <?php
+                        echo $this->session->flashdata("input_success");
+                        echo $this->session->flashdata("input_failed");
+                        echo $this->session->flashdata("update_success");
+                        echo $this->session->flashdata("update_failed");
+                        echo $this->session->flashdata("delete_success");
+                        echo $this->session->flashdata("delete_failed");
+                    ?>
                     <div class="static-table-list">
                         <table class="table" id="primary-table">
                             <thead>

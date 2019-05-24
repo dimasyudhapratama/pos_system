@@ -8,7 +8,26 @@ Class Rekap_keuangan extends CI_Controller{
     function index(){
         $data['title'] = 'Rekap Keuangan';
         $data['path'] = 'backend/keuangan/rekap_keuangan';
-        $data['keuangan'] = $this->M_keuangan->getKeuangan();
+        if($this->input->post('filter_by') != ""){
+            if($this->input->post('filter_by') == "date"){
+                $tipe = "date";
+                $data['tgl'] = $this->input->post('tgl');
+            }else if($this->input->post('filter_by') == "month"){
+                $tipe = "month"; 
+                $data['bulan'] = $this->input->post('bulan');
+                $data['btahun'] = $this->input->post('btahun');
+            }else if($this->input->post('filter_by') == "year"){
+                $tipe = "year";
+                $data['tahun'] = $this->input->post('tahun');
+            }else if($this->input->post('filter_by') == "custom"){
+                $tipe = "custom" ;
+                $data['tgl_awal'] = $this->input->post('tgl_awal');
+                $data['tgl_akhir'] = $this->input->post('tgl_akhir');
+            }   
+            $data['keuangan'] = $this->M_keuangan->getFilterKeuangan($tipe,$data);
+        }else{
+            $data['keuangan'] = $this->M_keuangan->getKeuangan();
+        }
         $this->load->view('backend/master-template',$data);
     }
     function add(){
@@ -62,5 +81,9 @@ Class Rekap_keuangan extends CI_Controller{
             <button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button>Data Gagal Ditambahkan!!<br>".$gagal."</div>");
         }
         redirect('rekap_keuangan');
+    }
+    function getfilter(){
+        $data['filter_by'] = $this->input->post('filter_by');
+        $this->load->view('backend/keuangan/get_filter_element',$data);
     }
 }

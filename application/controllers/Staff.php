@@ -44,11 +44,18 @@ Class Staff extends CI_Controller{
                 'password' => password_hash($this->input->post('password'), PASSWORD_DEFAULT)
             );
             if($this->M_staff->addstaff($data)==TRUE){
-                redirect('staff');
+                $this->session->set_flashdata("input_success","<div class='alert alert-success'>
+                <button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button>Data Berhasil Ditambahkan!!</div>");
             }else{
-                redirect('test');
+                $this->session->set_flashdata("input_failed","<div class='alert alert-danger'>
+                <button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button>Data Gagal Ditambahkan!!</div>");
             }
+        }else{
+            $gagal = validation_errors();
+            $this->session->set_flashdata("input_failed","<div class='alert alert-danger'>
+            <button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button>Data Gagal Ditambahkan!!<br>".$gagal."</div>"); 
         }
+        redirect('staff');
     }
     function edit(){
         $data['id'] = $this->input->post('id_staff');
@@ -137,20 +144,30 @@ Class Staff extends CI_Controller{
                 'username' => $this->input->post('username')
                 );
             if($this->M_staff->updatestaff($where,$data)==TRUE){
-                redirect('staff');
+                $this->session->set_flashdata("update_success","<div class='alert alert-success'>
+                <button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button>Data Berhasil Diubah!!</div>"); 
             }else{
-                redirect('test');
+                $this->session->set_flashdata("update_failed","<div class='alert alert-danger'>
+                <button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button>Data Gagal Diubah!!</div>");
             }
+        }else{
+            $gagal = validation_errors();
+            $this->session->set_flashdata("update_failed","<div class='alert alert-danger'>
+                <button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button>Data Gagal Diubah!!<br>".$gagal."</div>");
         }
+        redirect("staff");
     }
-      function delete($id){
+    function delete($id){
         $where = array(
             'id_staff' => $id
         );
         if($this->M_staff->deletestaff($where)==TRUE){
-            redirect('staff');
+            $this->session->set_flashdata("delete_success","<div class='alert alert-success'>
+            <button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button>Data Berhasil Dihapus!!</div>");
         }else{
-            redirect('test');
+            $this->session->set_flashdata("delete_failed","<div class='alert alert-danger'>
+            <button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button>Data Gagal Dihapus!!</div>"); 
         }
+        redirect('staff');
     }
-     }
+}

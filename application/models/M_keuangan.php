@@ -10,6 +10,22 @@ Class M_keuangan extends CI_Model{
         $this->db->order_by('tanggal',"DESC");
         return $this->db->get()->result();
     }
+    function getFilterKeuangan($tipe,$data){
+        $this->db->from($this->v_table);
+        if($tipe == "date"){
+            $this->db->where('DATE(tanggal)',$data['tgl']);
+        }else if($tipe == "month"){
+            $this->db->where('MONTH(tanggal)',$data['bulan']);
+            $this->db->where('YEAR(tanggal)',$data['btahun']);
+        }else if($tipe == "year"){
+            $this->db->where('YEAR(tanggal)',$data['tahun']);
+        }else if($tipe == "custom"){
+            $this->db->where('tanggal >=', $data['tgl_awal']);
+            $this->db->where('tanggal <=', $data['tgl_akhir']);
+        }
+        $this->db->order_by('tanggal',"DESC");
+        return $this->db->get()->result();
+    }
     //Pemasukan
     function getPemasukan(){
         return $this->db->get($this->_table_pemasukan)->result();
