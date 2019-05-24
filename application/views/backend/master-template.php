@@ -1,4 +1,10 @@
-
+<?php
+    if($this->session->userdata('_login') != TRUE){
+      redirect('login');          
+    }else{
+       $permission = $this->session->userdata('permission');
+    }
+?>
 <!doctype html>
 <html class="no-js" lang="en">
 
@@ -78,10 +84,17 @@
     <!-- jquery
     ============================================ -->
     <script src="<?php echo base_url() ?>assets/backend/js/jquery-3.4.0.min.js"></script>
+    <script type="text/javascript" src="//code.jquery.com/jquery-2.1.1.min.js"></script>
     <!-- Datatables -->
     <link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>assets/backend/css/datatables/datatables.min.css"/>
  
     <script type="text/javascript" src="<?php echo base_url() ?>assets/backend/js/datatables/datatables.min.js"></script>
+    <!--DateTimePicker -->
+    <link href="<?php echo base_url(); ?>assets/backend/css/DatetimePicker/bootstrap-datetimepicker.css" rel="stylesheet">
+	<script src="<?php echo base_url(); ?>assets/backend/js/moment.js"></script>
+	<script src="<?php echo base_url(); ?>assets/backend/js/DatetimePicker/bootstrap-datetimepicker.js"></script>
+
+
     <style>
         .bgredd{
             background-color:red;
@@ -130,79 +143,107 @@
                         <li>
                             <a title="Dashboard" href="<?php echo base_url(); ?>" aria-expanded="false">
                                 <span class="fa fa-home" aria-hidden="true"></span> 
-                                <span class="mini-click-non">Home</span>
+                                <span class="mini-click-non">Home </span>
                             </a>
                         </li>
-                        <li>
-                            <a title="Penjualan" href="<?php echo base_url().'index.php/penjualan'?>" aria-expanded="false">
-                                <span class="educate-icon educate-event icon-wrap sub-icon-mg" aria-hidden="true"></span> 
-                                <span class="mini-click-non">Penjualan</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a title="Pemasokan" href="<?php echo base_url().'index.php/pemasokan'?>" aria-expanded="false">
-                                <span class="educate-icon educate-event icon-wrap sub-icon-mg" aria-hidden="true"></span> 
-                                <span class="mini-click-non">Pemasokan</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a class="has-arrow" href="index.html">
-								   <span class="fa fa-home"></span>
-								   <span class="mini-click-non">Katalog</span>
-								</a>
-                            <ul class="submenu-angle" aria-expanded="true">
-                                <li><a title="Kategori Produk" href="<?php echo base_url().'index.php/kategori_produk' ?>"><span class="mini-sub-pro">Kategori Produk</span></a></li>
-                                <li><a title="List Produk" href="<?php echo base_url().'index.php/produk' ?>"><span class="mini-sub-pro">Produk</span></a></li>
-                            </ul>
-                        </li>
-                        <li>
-                            <a class="has-arrow" href="index.html">
-								   <span class="fa fa-home"></span>
-								   <span class="mini-click-non">Bahan Baku</span>
-								</a>
-                            <ul class="submenu-angle" aria-expanded="true">
-                                <li><a title="Kategori Bahan Baku" href="<?php echo base_url().'index.php/kategori_bahan_baku' ?>"><span class="mini-sub-pro">Kategori Bahan Baku</span></a></li>
-                                <li><a title="List Bahan Baku" href="<?php echo base_url().'index.php/bahan_baku' ?>"><span class="mini-sub-pro">List Bahan Baku</span></a></li>
-                                <li><a title="Resep" href="<?php echo base_url().'index.php/resep' ?>"><span class="mini-sub-pro">Resep</span></a></li>
-                            </ul>
-                        </li>
-                        <li>
-                            <a title="Customer" href="<?php echo base_url().'index.php/customer'?>" aria-expanded="false">
-                                <span class="educate-icon educate-event icon-wrap sub-icon-mg" aria-hidden="true"></span> 
-                                <span class="mini-click-non">Customer</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a title="Supplier" href="<?php echo base_url().'index.php/supplier'?>" aria-expanded="false">
-                                <span class="educate-icon educate-event icon-wrap sub-icon-mg" aria-hidden="true"></span> 
-                                <span class="mini-click-non">Supplier</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a class="has-arrow" href="index.html">
-								   <span class="fa fa-person"></span>
-								   <span class="mini-click-non">Staff</span>
-								</a>
-                            <ul class="submenu-angle" aria-expanded="true">
-                                <li><a title="Pengaturan Hak Akses" href="<?php echo base_url().'index.php/hak_akses' ?>"><span class="mini-sub-pro">Hak Akses</span></a></li>
-                                <li><a title="List Staff" href="<?php echo base_url().'index.php/staff' ?>"><span class="mini-sub-pro">List Staff</span></a></li>
-                                
-                            </ul>
-                        </li>
+                        <?php
+                        if(preg_match("/2/",$permission)){ 
+                        ?>
+                            <li>
+                                <a title="Penjualan" href="<?php echo base_url().'index.php/penjualan'; ?>" aria-expanded="false">
+                                    <span class="educate-icon educate-event icon-wrap sub-icon-mg" aria-hidden="true"></span> 
+                                    <span class="mini-click-non">Penjualan</span>
+                                </a>
+                            </li>
+                        <?php
+                        }
+                        if(preg_match("/1/",$permission)){ 
+                        ?>
+                            <li>
+                                <a title="Pemasokan" href="<?php echo base_url().'index.php/pemasokan'; ?>" aria-expanded="false">
+                                    <span class="educate-icon educate-event icon-wrap sub-icon-mg" aria-hidden="true"></span> 
+                                    <span class="mini-click-non">Pemasokan</span>
+                                </a>
+                            </li>
+                        <?php 
+                        }
+                        if(preg_match("/3/",$permission) || preg_match("/4/",$permission)){ 
+                        ?>
+                            <li>
+                                <a class="has-arrow" href="#">
+                                    <span class="fa fa-home"></span>
+                                    <span class="mini-click-non">Katalog</span>
+                                    </a>
+                                <ul class="submenu-angle" aria-expanded="true">
+                                    <?php if(preg_match("/3/",$permission)){ ?><li><a title="Kategori Produk" href="<?php echo base_url().'index.php/kategori_produk'; ?>"><span class="mini-sub-pro">Kategori Produk</span></a></li> <?php } ?>
+                                    <?php if(preg_match("/4/",$permission)){ ?><li><a title="List Produk" href="<?php echo base_url().'index.php/produk'; ?>"><span class="mini-sub-pro">Produk</span></a></li> <?php } ?>
+                                </ul>
+                            </li>
+                        <?php 
+                        }
+                        if(preg_match("/5/",$permission) || preg_match("/6/",$permission) || preg_match("/7/",$permission)){ 
+                        ?>
+                            <li>
+                                <a class="has-arrow" href="#">
+                                    <span class="fa fa-home"></span>
+                                    <span class="mini-click-non">Bahan Baku</span>
+                                    </a>
+                                <ul class="submenu-angle" aria-expanded="true">
+                                    <?php if(preg_match("/5/",$permission)){ ?><li><a title="Kategori Bahan Baku" href="<?php echo base_url().'index.php/kategori_bahan_baku'; ?>"><span class="mini-sub-pro">Kategori Bahan Baku</span></a></li><?php } ?>
+                                    <?php if(preg_match("/6/",$permission)){ ?><li><a title="List Bahan Baku" href="<?php echo base_url().'index.php/bahan_baku'; ?>"><span class="mini-sub-pro">List Bahan Baku</span></a></li><?php } ?>
+                                    <?php if(preg_match("/7/",$permission)){ ?><li><a title="Resep" href="<?php echo base_url().'index.php/resep'; ?>"><span class="mini-sub-pro">Resep</span></a></li><?php } ?>
+                                </ul>
+                            </li>
+                        <?php
+                        }
+                        if(preg_match("/8/",$permission)){
+                        ?>
+                            <li>
+                                <a title="Customer" href="<?php echo base_url().'index.php/customer';?>" aria-expanded="false">
+                                    <span class="educate-icon educate-event icon-wrap sub-icon-mg" aria-hidden="true"></span> 
+                                    <span class="mini-click-non">Customer</span>
+                                </a>
+                            </li>
+                        <?php 
+                        }
+                        if(preg_match("/9/",$permission)){
+                        ?>
+                            <li>
+                                <a title="Supplier" href="<?php echo base_url().'index.php/supplier'; ?>" aria-expanded="false">
+                                    <span class="educate-icon educate-event icon-wrap sub-icon-mg" aria-hidden="true"></span> 
+                                    <span class="mini-click-non">Supplier</span>
+                                </a>
+                            </li>
+                        <?php 
+                        }
+                        if(preg_match("/10/",$permission) || preg_match("/11/",$permission)){
+                        ?>
+                            <li>
+                                <a class="has-arrow" href="#">
+                                    <span class="fa fa-person"></span>
+                                    <span class="mini-click-non">Staff</span>
+                                    </a>
+                                <ul class="submenu-angle" aria-expanded="true">
+                                    <?php if(preg_match("/10/",$permission)){ ?><li><a title="Pengaturan Hak Akses" href="<?php echo base_url().'index.php/hak_akses'; ?>"><span class="mini-sub-pro">Hak Akses</span></a></li><?php } ?>
+                                    <?php if(preg_match("/11/",$permission)){ ?><li><a title="List Staff" href="<?php echo base_url().'index.php/staff'; ?>"><span class="mini-sub-pro">List Staff</span></a></li><?php } ?>
+                                    
+                                </ul>
+                            </li>
+                        <?php
+                        }
+                        if(preg_match("/12/",$permission)){
+                        ?>
                         <li>
                             <a class="has-arrow" href="#">
 								   <span class="fa fa-home"></span>
 								   <span class="mini-click-non">Keuangan</span>
 								</a>
                             <ul class="submenu-angle" aria-expanded="true">
-                                <li><a title="Rekap Keuangan" href="<?php echo base_url().'index.php/rekap_keuangan' ?>"><span class="mini-sub-pro">Rekap Keuangan</span></a></li>
-                                <!-- <li><a title="Rekap Pemasukan" href="<?php echo base_url().'index.php/keuangan_pemasukan' ?>"><span class="mini-sub-pro">Rekap Pemasukan</span></a></li>
-                                <li><a title="Rekap Pengeluaran" href="<?php echo base_url().'index.php/keuangan_pengeluaran' ?>"><span class="mini-sub-pro">Rekap Pengeluaran</span></a></li> -->
-                                <li><a title="Pemasukan Lain" href="<?php echo base_url().'index.php/pemasukan_lain' ?>"><span class="mini-sub-pro">Pemasukan Lain</span></a></li>
-                                <li><a title="Pengeluaran Lain" href="<?php echo base_url().'index.php/pengeluaran_lain' ?>"><span class="mini-sub-pro">Pengeluaran Lain</span></a></li>
+                                <?php if(preg_match("/12/",$permission)){ ?><li><a title="Rekap Keuangan" href="<?php echo base_url().'index.php/rekap_keuangan'; ?>"><span class="mini-sub-pro">Rekap Keuangan</span></a></li><?php } ?>
                                 
                             </ul>
                         </li>
+                        <?php } ?>
                     </ul>
                 </nav>
             </div>
@@ -251,11 +292,11 @@
                                                 <li class="nav-item">
                                                     <a href="#" data-toggle="dropdown" role="button" aria-expanded="false" class="nav-link dropdown-toggle">
 															<img src="<?php echo base_url() ?>assets/backend/img/product/pro4.jpg" alt="" />
-															<span class="admin-name"><?php echo "TES Nama" ?></span>
+															<span class="admin-name"><?php echo $this->session->userdata('nama_terang'); ?></span>
 															<i class="fa fa-angle-down edu-icon edu-down-arrow"></i>
 														</a>
                                                     <ul role="menu" class="dropdown-header-top author-log dropdown-menu animated zoomIn">
-                                                        <li><a href="<?php echo base_url().'login/logout' ?>"><span class="edu-icon edu-locked author-log-ic"></span>Log Out</a>
+                                                        <li><a href="<?php echo base_url().'index.php/login/logout' ?>"><span class="edu-icon edu-locked author-log-ic"></span>Log Out</a>
                                                         </li>
                                                     </ul>
                                                 </li>
@@ -276,176 +317,67 @@
                             <div class="mobile-menu">
                                 <nav id="dropdown">
                                     <ul class="mobile-menu-nav">
-                                        <li><a data-toggle="collapse" data-target="#Charts" href="#">Home <span class="admin-project-icon edu-icon edu-down-arrow"></span></a>
-                                            <ul class="collapse dropdown-header-top">
-                                                <li><a href="index.html">Dashboard v.1</a></li>
-                                                <li><a href="index-1.html">Dashboard v.2</a></li>
-                                                <li><a href="index-3.html">Dashboard v.3</a></li>
-                                                <li><a href="analytics.html">Analytics</a></li>
-                                                <li><a href="widgets.html">Widgets</a></li>
-                                            </ul>
-                                        </li>
-                                        <li><a href="events.html">Event</a></li>
-                                        <li><a data-toggle="collapse" data-target="#demoevent" href="#">Professors <span class="admin-project-icon edu-icon edu-down-arrow"></span></a>
+                                        <li><a href="<?php echo base_url(); ?>">Home</a></li>
+                                        <?php
+                                        if(preg_match("/2/",$permission)){ 
+                                        ?>
+                                            <li><a href="<?php echo base_url().'index.php/penjualan'; ?>">Penjualan</a></li>
+                                        <?php
+                                        }
+                                        if(preg_match("/1/",$permission)){ 
+                                        ?>
+                                            <li><a href="<?php echo base_url().'index.php/pemasokan'; ?>">Pemasokan</a></li>
+                                        <?php 
+                                        }
+                                        if(preg_match("/3/",$permission) || preg_match("/4/",$permission)){ 
+                                        ?>
+                                            <li><a data-toggle="collapse" href="#">Katalog <span class="admin-project-icon edu-icon edu-down-arrow"></span></a>
+                                                <ul class="collapse dropdown-header-top">
+                                                    <?php if(preg_match("/3/",$permission)){ ?><li><a href="<?php echo base_url().'index.php/kategori_produk'; ?>">Kategori Produk</a></li><?php } ?>
+                                                    <?php if(preg_match("/4/",$permission)){ ?><li><a href="<?php echo base_url().'index.php/produk'; ?>">List Produk</a></li> <?php } ?>
+                                                </ul>
+                                            </li>
+                                        <?php 
+                                        }
+                                        if(preg_match("/5/",$permission) || preg_match("/6/",$permission) || preg_match("/7/",$permission)){ 
+                                        ?>
+                                        <li><a data-toggle="collapse" href="#">Bahan Baku <span class="admin-project-icon edu-icon edu-down-arrow"></span></a>
                                             <ul id="demoevent" class="collapse dropdown-header-top">
-                                                <li><a href="all-professors.html">All Professors</a>
-                                                </li>
-                                                <li><a href="add-professor.html">Add Professor</a>
-                                                </li>
-                                                <li><a href="edit-professor.html">Edit Professor</a>
-                                                </li>
-                                                <li><a href="professor-profile.html">Professor Profile</a>
-                                                </li>
+                                                <?php if(preg_match("/5/",$permission)){ ?><li><a href="<?php echo base_url().'index.php/kategori_bahan_baku'; ?>">Kategori Bahan Baku</a></li> <?php } ?>
+                                                <?php if(preg_match("/6/",$permission)){ ?><li><a href="<?php echo base_url().'index.php/bahan_baku'; ?>">List Bahan Baku</a></li> <?php } ?>
+                                                <?php if(preg_match("/7/",$permission)){ ?><li><a href="<?php echo base_url().'index.php/resep'; ?>">Resep</a></li> <?php } ?>
                                             </ul>
                                         </li>
-                                        <li><a data-toggle="collapse" data-target="#demopro" href="#">Students <span class="admin-project-icon edu-icon edu-down-arrow"></span></a>
+                                        <?php
+                                        }
+                                        if(preg_match("/8/",$permission)){
+                                        ?>
+                                        <li><a href="<?php echo base_url().'index.php/customer'; ?>">Customer</a></li>
+                                        <?php 
+                                        }
+                                        if(preg_match("/9/",$permission)){
+                                        ?>
+                                        <li><a href="<?php echo base_url().'index.php/supplier'; ?>">Supplier</a></li>
+                                        <?php 
+                                        }
+                                        if(preg_match("/10/",$permission) || preg_match("/11/",$permission)){
+                                        ?>
+                                        <li><a data-toggle="collapse" href="#">Staff <span class="admin-project-icon edu-icon edu-down-arrow"></span></a>
                                             <ul id="demopro" class="collapse dropdown-header-top">
-                                                <li><a href="all-students.html">All Students</a>
-                                                </li>
-                                                <li><a href="add-student.html">Add Student</a>
-                                                </li>
-                                                <li><a href="edit-student.html">Edit Student</a>
-                                                </li>
-                                                <li><a href="student-profile.html">Student Profile</a>
-                                                </li>
+                                                <?php if(preg_match("/10/",$permission)){ ?><li><a href="<?php echo base_url().'index.php/hak_akses'; ?>">Hak Akses</a></li> <?php } ?>
+                                                <?php if(preg_match("/11/",$permission)){ ?><li><a href="<?php echo base_url().'index.php/staff'; ?>">List Staff</a></li> <?php } ?>
                                             </ul>
                                         </li>
-                                        <li><a data-toggle="collapse" data-target="#democrou" href="#">Courses <span class="admin-project-icon edu-icon edu-down-arrow"></span></a>
+                                        <?php
+                                        }
+                                        if(preg_match("/12/",$permission)){
+                                        ?>
+                                        <li><a data-toggle="collapse" href="#">Keuangan <span class="admin-project-icon edu-icon edu-down-arrow"></span></a>
                                             <ul id="democrou" class="collapse dropdown-header-top">
-                                                <li><a href="all-courses.html">All Courses</a>
-                                                </li>
-                                                <li><a href="add-course.html">Add Course</a>
-                                                </li>
-                                                <li><a href="edit-course.html">Edit Course</a>
-                                                </li>
-                                                <li><a href="course-profile.html">Courses Info</a>
-                                                </li>
-                                                <li><a href="course-payment.html">Courses Payment</a>
-                                                </li>
+                                                <?php if(preg_match("/12/",$permission)){ ?><li><a href="<?php echo base_url().'index.php/rekap_keuangan'; ?>">Rekap Keuangan</a></li>  <?php } ?>
                                             </ul>
                                         </li>
-                                        <li><a data-toggle="collapse" data-target="#demolibra" href="#">Library <span class="admin-project-icon edu-icon edu-down-arrow"></span></a>
-                                            <ul id="demolibra" class="collapse dropdown-header-top">
-                                                <li><a href="library-assets.html">Library Assets</a>
-                                                </li>
-                                                <li><a href="add-library-assets.html">Add Library Asset</a>
-                                                </li>
-                                                <li><a href="edit-library-assets.html">Edit Library Asset</a>
-                                                </li>
-                                            </ul>
-                                        </li>
-                                        <li><a data-toggle="collapse" data-target="#demodepart" href="#">Departments <span class="admin-project-icon edu-icon edu-down-arrow"></span></a>
-                                            <ul id="demodepart" class="collapse dropdown-header-top">
-                                                <li><a href="departments.html">Departments List</a>
-                                                </li>
-                                                <li><a href="add-department.html">Add Departments</a>
-                                                </li>
-                                                <li><a href="edit-department.html">Edit Departments</a>
-                                                </li>
-                                            </ul>
-                                        </li>
-                                        <li><a data-toggle="collapse" data-target="#demo" href="#">Mailbox <span class="admin-project-icon edu-icon edu-down-arrow"></span></a>
-                                            <ul id="demo" class="collapse dropdown-header-top">
-                                                <li><a href="mailbox.html">Inbox</a>
-                                                </li>
-                                                <li><a href="mailbox-view.html">View Mail</a>
-                                                </li>
-                                                <li><a href="mailbox-compose.html">Compose Mail</a>
-                                                </li>
-                                            </ul>
-                                        </li>
-                                        <li><a data-toggle="collapse" data-target="#Miscellaneousmob" href="#">Interface <span class="admin-project-icon edu-icon edu-down-arrow"></span></a>
-                                            <ul id="Miscellaneousmob" class="collapse dropdown-header-top">
-                                                <li><a href="google-map.html">Google Map</a>
-                                                </li>
-                                                <li><a href="data-maps.html">Data Maps</a>
-                                                </li>
-                                                <li><a href="pdf-viewer.html">Pdf Viewer</a>
-                                                </li>
-                                                <li><a href="x-editable.html">X-Editable</a>
-                                                </li>
-                                                <li><a href="code-editor.html">Code Editor</a>
-                                                </li>
-                                                <li><a href="tree-view.html">Tree View</a>
-                                                </li>
-                                                <li><a href="preloader.html">Preloader</a>
-                                                </li>
-                                                <li><a href="images-cropper.html">Images Cropper</a>
-                                                </li>
-                                            </ul>
-                                        </li>
-                                        <li><a data-toggle="collapse" data-target="#Chartsmob" href="#">Charts <span class="admin-project-icon edu-icon edu-down-arrow"></span></a>
-                                            <ul id="Chartsmob" class="collapse dropdown-header-top">
-                                                <li><a href="bar-charts.html">Bar Charts</a>
-                                                </li>
-                                                <li><a href="line-charts.html">Line Charts</a>
-                                                </li>
-                                                <li><a href="area-charts.html">Area Charts</a>
-                                                </li>
-                                                <li><a href="rounded-chart.html">Rounded Charts</a>
-                                                </li>
-                                                <li><a href="c3.html">C3 Charts</a>
-                                                </li>
-                                                <li><a href="sparkline.html">Sparkline Charts</a>
-                                                </li>
-                                                <li><a href="peity.html">Peity Charts</a>
-                                                </li>
-                                            </ul>
-                                        </li>
-                                        <li><a data-toggle="collapse" data-target="#Tablesmob" href="#">Tables <span class="admin-project-icon edu-icon edu-down-arrow"></span></a>
-                                            <ul id="Tablesmob" class="collapse dropdown-header-top">
-                                                <li><a href="static-table.html">Static Table</a>
-                                                </li>
-                                                <li><a href="data-table.html">Data Table</a>
-                                                </li>
-                                            </ul>
-                                        </li>
-                                        <li><a data-toggle="collapse" data-target="#formsmob" href="#">Forms <span class="admin-project-icon edu-icon edu-down-arrow"></span></a>
-                                            <ul id="formsmob" class="collapse dropdown-header-top">
-                                                <li><a href="basic-form-element.html">Basic Form Elements</a>
-                                                </li>
-                                                <li><a href="advance-form-element.html">Advanced Form Elements</a>
-                                                </li>
-                                                <li><a href="password-meter.html">Password Meter</a>
-                                                </li>
-                                                <li><a href="multi-upload.html">Multi Upload</a>
-                                                </li>
-                                                <li><a href="tinymc.html">Text Editor</a>
-                                                </li>
-                                                <li><a href="dual-list-box.html">Dual List Box</a>
-                                                </li>
-                                            </ul>
-                                        </li>
-                                        <li><a data-toggle="collapse" data-target="#Appviewsmob" href="#">App views <span class="admin-project-icon edu-icon edu-down-arrow"></span></a>
-                                            <ul id="Appviewsmob" class="collapse dropdown-header-top">
-                                                <li><a href="basic-form-element.html">Basic Form Elements</a>
-                                                </li>
-                                                <li><a href="advance-form-element.html">Advanced Form Elements</a>
-                                                </li>
-                                                <li><a href="password-meter.html">Password Meter</a>
-                                                </li>
-                                                <li><a href="multi-upload.html">Multi Upload</a>
-                                                </li>
-                                                <li><a href="tinymc.html">Text Editor</a>
-                                                </li>
-                                                <li><a href="dual-list-box.html">Dual List Box</a>
-                                                </li>
-                                            </ul>
-                                        </li>
-                                        <li><a data-toggle="collapse" data-target="#Pagemob" href="#">Pages <span class="admin-project-icon edu-icon edu-down-arrow"></span></a>
-                                            <ul id="Pagemob" class="collapse dropdown-header-top">
-                                                <li><a href="login.html">Login</a>
-                                                </li>
-                                                <li><a href="register.html">Register</a>
-                                                </li>
-                                                <li><a href="lock.html">Lock</a>
-                                                </li>
-                                                <li><a href="password-recovery.html">Password Recovery</a>
-                                                </li>
-                                                <li><a href="404.html">404 Page</a></li>
-                                                <li><a href="500.html">500 Page</a></li>
-                                            </ul>
-                                        </li>
+                                        <?php } ?>
                                     </ul>
                                 </nav>
                             </div>
@@ -460,7 +392,6 @@
             <?php
             $this->load->view($path);
             ?>
-            
         <!-- Content End -->
         <br>
         <div class="footer-copyright-area">
@@ -477,7 +408,7 @@
     </div>
     
     
-
+                            
     <!-- bootstrap JS
 		============================================ -->
     <script src="<?php echo base_url() ?>assets/backend/js/bootstrap.min.js"></script>
@@ -534,6 +465,8 @@
     <!-- main JS
 		============================================ -->
     <script src="<?php echo base_url() ?>assets/backend/js/main.js"></script>
+
+    
 </body>
 
 </html>

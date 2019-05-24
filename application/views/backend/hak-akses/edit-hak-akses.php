@@ -82,27 +82,7 @@
                             </div>
                             <div class="col-md-6">
                                  <div class="i-checks pull-left">
-                                    <label><input type="checkbox" name="permission[]" value="12" <?php if(preg_match("/12/",$m->permission)){echo "checked";} ?>> <i></i> Laba Rugi </label>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                 <div class="i-checks pull-left">
-                                    <label><input type="checkbox" name="permission[]" value="13" <?php if(preg_match("/13/",$m->permission)){echo "checked";} ?>> <i></i> Rekap Pemasukan </label>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                 <div class="i-checks pull-left">
-                                    <label><input type="checkbox" name="permission[]" value="14" <?php if(preg_match("/14/",$m->permission)){echo "checked";} ?>> <i></i> Rekap Pengeluaran </label>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                 <div class="i-checks pull-left">
-                                    <label><input type="checkbox" name="permission[]" value="15" <?php if(preg_match("/15/",$m->permission)){echo "checked";} ?>> <i></i> Pemasukan Lain </label>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                 <div class="i-checks pull-left">
-                                    <label><input type="checkbox" name="permission[]" value="16" <?php if(preg_match("/16/",$m->permission)){echo "checked";} ?>> <i></i> Pengeluaran Lain </label>
+                                    <label><input type="checkbox" name="permission[]" value="12" <?php if(preg_match("/12/",$m->permission)){echo "checked";} ?>> <i></i> Rekap Keuangan </label>
                                 </div>
                             </div>
                         </div>

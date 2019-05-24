@@ -3,19 +3,6 @@
     $(document).ready(function(){
         $("#primary-table").DataTable();
     });
-    $(document).ready(function(){
-        $("#form-element").hide();
-    });
-    function openForm(){
-        $("#table-element").addClass("col-lg-8 col-md-8 col-sm-8");
-        $("#table-element").removeClass("col-lg-12 col-md-12 col-sm-12");
-        $("#form-element").show();
-    }
-    function closeForm(){
-        $("#table-element").removeClass("col-lg-8 col-md-8 col-sm-8");
-        $("#table-element").addClass("col-lg-12 col-md-12 col-sm-12");
-        $("#form-element").hide();
-    }
     function edit(id){
         $.ajax({
             url: "<?php echo base_url().'index.php/customer/edit'; ?>",
@@ -39,11 +26,18 @@
                         </div>
                         <div class="pull-right">
                             <a class="btn btn-sm btn-primary mg-b-10" href="#" data-toggle="modal" data-target="#modaladd">Tambah</a>
-                            <!-- <button class="btn btn-default" onclick="openForm()">Test</button> -->
                         </div>
                     </div>
                 </div>
                 <div class="sparkline8-graph">
+                <?php
+                        echo $this->session->flashdata("input_success");
+                        echo $this->session->flashdata("input_failed");
+                        echo $this->session->flashdata("update_success");
+                        echo $this->session->flashdata("update_failed");
+                        echo $this->session->flashdata("delete_success");
+                        echo $this->session->flashdata("delete_failed");
+                    ?>
                     <div class="static-table-list">
                         <table id="primary-table" class="table">
                             <thead>
@@ -70,7 +64,6 @@
                                                 <span class="caret"></span>
                                             </button>
                                             <ul class="dropdown-menu" role="menu">
-                                                <!-- <li><a class="click-edit" href="#" id="<?php echo $c->id_customer; ?>">Edit</a></li> -->
                                                 <li><a onclick="edit(<?php echo $c->id_customer; ?>)" data-toggle="modal" href="#">Edit</a></li>
                                                 <li><a onclick="return confirm('Anda Yakin Ingin Menghapus Data?')" href="<?php echo base_url().'index.php/customer/delete/'.$c->id_customer ?>">Delete</a></li>
                                             </ul>
@@ -84,36 +77,6 @@
                 </div>
             </div>
         </div>
-        <!-- <div id="form-element" class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-            <div class="sparkline16-list responsive-mg-b-30">
-                <div class="sparkline8-hd" style="margin-bottom:50px;">
-                    <div class="main-sparkline8-hd">
-                        <div class="pull-right">
-                            <button class="btn btn-sm btn-primary" style="border-radius:50%;" onclick="closeForm();"><i class="fa fa-close"></i></button>            
-                        </div>
-                    </div>
-                </div>
-                <div class="sparkline16-graph">
-                    <form action="" method="post">
-                        <div class="form-group-inner">
-                            <label for="">Nama</label>
-                            <input type="text" class="form-control" placeholder="Masukkan Nama">
-                        </div>
-                        <div class="form-group-inner">
-                            <label for="">No. HP</label>
-                            <input type="text" class="form-control" placeholder="Masukkan No. HP">
-                        </div>
-                        <div class="login-btn-inner">
-                                <div class="pull-right">
-                                    <input class="btn btn-sm btn-default" type="reset" value="Reset">
-                                    <input class="btn btn-sm btn-primary" type="submit" value="Simpan">
-                                </div>
-                                <br>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div> -->
     </div>
     <div id="modaladd" class="modal modal-edu-general default-popup-PrimaryModal fade" role="dialog">
         <div class="modal-dialog">

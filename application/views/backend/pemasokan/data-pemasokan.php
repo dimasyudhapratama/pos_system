@@ -82,6 +82,7 @@ function ubahStatus(id){
                                             <div class="col-md-3">
                                                 <div class="form-group">
                                                     <select name="pilihan" id="pilihan" class="form-control">
+                                                        <option>---pilih---</option>
                                                         <option value="pj">Produk Jadi</option>
                                                         <option value="bb">Bahan Baku</option>
                                                     </select>

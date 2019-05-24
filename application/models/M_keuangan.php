@@ -6,20 +6,31 @@ Class M_keuangan extends CI_Model{
     private $_table_pemasukan = 'keuangan_pemasukan';
     //Rekap
     function getKeuangan(){
-        return $this->db->get($this->v_table)->result();
+        $this->db->from($this->v_table);
+        $this->db->order_by('tanggal',"DESC");
+        return $this->db->get()->result();
     }
     //Pemasukan
     function getPemasukan(){
         return $this->db->get($this->_table_pemasukan)->result();
     }
     function inputPemasukan($data){
-        $this->db->insert($this->_table_pemasukan,$data);
+        if($this->db->insert($this->_table_pemasukan,$data)){
+            return TRUE;
+        }else{
+            return FALSE;
+        }
+        
     }
     //Pengeluaran
     function getPengeluaran(){
         return $this->db->get($this->_table_pengeluaran)->result();
     }
     function inputPengeluaran($data){
-        $this->db->insert($this->_table_pengeluaran,$data);
+        if($this->db->insert($this->_table_pengeluaran,$data)){
+            return TRUE;
+        }else{
+            return FALSE;
+        }
     }
 }
