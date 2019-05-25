@@ -6,6 +6,7 @@ Class Bahan_baku extends CI_Controller{
         parent::__construct();
         $this->load->model('M_bahan_baku');
         $this->load->model('M_kategori_bahan_baku');
+        $this->load->model('M_restock');
         $this->load->library('form_validation');
     }
     function index(){
@@ -15,10 +16,13 @@ Class Bahan_baku extends CI_Controller{
         $data['bahan_baku'] = $this->M_bahan_baku->getBahanBaku();
         $this->load->view("backend/master-template",$data);
     }
-    function history_bahan_baku(){
-        $data['title'] = "Restock Bahan Baku";
-        $data['path'] = "backend/bahan_baku/history-bahan_baku";
-        $data['kategori_bahan_baku'] = $this->M_kategori_bahan_baku->getKategoriBahanBaku();
+    function riwayat_restock(){
+        $data['title'] = "Riwayat Re-Stock";
+        $data['path'] = "backend/bahan_baku/riwayat_restock";
+        $where = array(
+            'id_restock_bahan_baku' => $this->input->post('id_restock_bahan_baku')
+        );
+        $data['re_stock'] = $this->M_restock->getRestockBahanBaku($where);
         $data['bahan_baku'] = $this->M_bahan_baku->getBahanBaku();
         $this->load->view("backend/master-template",$data);
     }
@@ -142,82 +146,32 @@ Class Bahan_baku extends CI_Controller{
         $this->load->view("backend/bahan_baku/re_stok_bahan_baku",$data);
 
     }
-    // function update_re_stock(){
-    //     $config = array(
-    //         array(
-    //             'field' => 'id_bahan_baku',
-    //             'label' => 'ID bahan baku',
-    //             'rules' => 'required'
-    //         ),
-    //         array(
-    //             'field' => 'satuan',
-    //             'label' => 'Satuan',
-    //             'rules' => 'required'
-    //         ),
-    //         array(
-    //             'field' => 'nama_bahan_baku',
-    //             'label' => 'Nama Bahan Baku',
-    //             'rules' => 'required'
-    //         ),
-    //         array(
-    //             'field' => 'stok',
-    //             'label' => 'Stok',
-    //             'rules' => 'integer'
-    //         ),
-    //     );
-    //     // mengambil data stok lama
-
-    //     //dibandingkan pake + atau -
-
-    //     //
-    //     $this->form_validation->set_rules($config);
-    //     if($this->form_validation->run()==TRUE){
-    //         $data = array(
-    //             'stok' => $this->input->post('stok')       
-    //         );
-    //         $this->M_bahan_baku->addBahanBaku($data);
-    //     }
-
-    //     if($this->form_validation->run()==TRUE){
-    //         $data2 = array(
-    //             'id_bahan_baku' => $this->input->post('id_bahan_baku'),
-    //             'satuan' => $this->input->post('satuan'),
-    //             'stok' => $this->input->post('stok'),       
-    //             'nama_bahan_baku' => $this->input->post('nama_bahan_baku')
-
-    //         );
-    //         $this->M_restock->inputRestockBahanBaku($data2);
-
-    //         if($this->M_bahan_baku->addBahanBaku($data)==TRUE){
-    //             redirect('bahan_baku');
-    //         }else{
-    //             redirect('test');
-    //         }
-    //     }
-
-    // }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    //controler bahan baku restock belum selesai!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
     function update_re_stock(){
         $id_bahan_baku = $this->input->post('id_bahan_baku');
         $stok_baru = $this->input->post('stok');
         $where = array(
             'id_bahan_baku' => $this->input->post('id_bahan_baku')
         );
+        $data = array(
+            'stok' => $stok_baru
+        );
         $bahan_baku = $this->M_bahan_baku->get1BahanBaku($where);
+        $this->M_bahan_baku->updateBahanBaku($where,$data);
+        // $config = array(
+        //     array(
+        //         'field' => 'id_bahan_baku',
+        //         'label' => 'ID bahan baku',
+        //         'rules' => 'required'
+        //     ),
+        //     array(
+        //         'field' => 'keterangan',
+        //         'label' => 'Keterangan',
+        //         'rules' => 'integer'
+        //     ),
+        // );
+        //     $this->form_validation->set_rules($config);
+        //     if($this->form_validation->run()==TRUE){
+        //input history
         foreach ($bahan_baku as $bb) {
             $stok_lama = $bb->stok;
         }
@@ -232,52 +186,19 @@ Class Bahan_baku extends CI_Controller{
 
             $jumlah = $stok_baru - $stok_lama;
         }
-
-        $config = array(
-            array(
-                'field' => 'id_bahan_baku',
-                'label' => 'ID bahan baku',
-                'rules' => 'required'
-            ),
-            array(
-                'field' => 'satuan',
-                'label' => 'Satuan',
-                'rules' => 'required'
-            ),
-            array(
-                'field' => 'nama_bahan_baku',
-                'label' => 'Nama Bahan Baku',
-                'rules' => 'required'
-            ),
-            array(
-                'field' => 'stok',
-                'label' => 'Stok',
-                'rules' => 'integer'
-            ),
-            array(
-                'field' => 'keterangan',
-                'label' => 'Keterangan',
-                'rules' => 'integer'
-            ),
+        $data2 = array(
+            'id_bahan_baku' => $this->input->post('id_bahan_baku'),
+            'keterangan' => $this->input->post('keterangan'), 
+            'jumlah' => $jumlah,
+            'tipe' => $tipe
         );
-         $this->form_validation->set_rules($config);
-        if($this->form_validation->run()==TRUE){
-            $where = array(
-                'id_bahan_baku' => $this->input->post('id_bahan_baku')
-            );
-            $data = array(
-                'stok' => $this->input->post('stok'),
-                'keterangan' => $this->input->post('keterangan'), 
-                'jumlah' => $this->input->post('jumlah') ,
-                'tipe' => $this->input->post('tipe')
-            );
 
-            $this->M_restock->inputRestockBahanBaku($data);
-            $this->M_restock->getRestockBahanBaku($where,$data);
+        $this->M_restock->inputRestockBahanBaku($data2);
+        
+        redirect('bahan_baku');
 
-                
-            }
-            redirect('bahan_baku');
         }
+            
+//     }
 
 }

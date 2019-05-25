@@ -1,4 +1,4 @@
-
+d
 <script type="text/javascript">
     // $(document).ready(function(){
     //     $("#form-element").hide();
@@ -32,6 +32,17 @@
             success: function (ajaxData){
                 $("#modal_re_stock").html(ajaxData);
                 $("#modal_re_stock").modal('show',{backdrop: 'true'});
+            }
+        });
+    }
+    function riwayat_restock(id){
+        $.ajax({
+            url: "<?php echo base_url().'index.php/bahan_baku/riwayat_restock'; ?>",
+            type: "POST",
+            data : {id_restock_bahan_baku: id},
+            success: function (ajaxData){
+                $("#modal_riwayat_restock").html(ajaxData);
+                $("#modal_riwayat_restock").modal('show',{backdrop: 'true'});
             }
         });
     }
@@ -85,7 +96,8 @@
                                             </button>
                                             <ul class="dropdown-menu" role="menu">
                                                 <!-- <li><a class="click-edit" href="#" id="<?php echo $c->id_bahan_baku; ?>">Edit</a></li> -->
-                                                <li><a onclick="re_stock(<?php echo $c->id_bahan_baku; ?>)" data-toggle="modal" href="#">Re-Stok</a></li>
+                                                <li><a onclick="re_stock(<?php echo $c->id_bahan_baku; ?>)" data-toggle="modal" href="#">Re-Stok</a></li> 
+                                                <li><a onclick="riwayat_restock(<?php echo $c->id_bahan_baku; ?>)" data-toggle="modal" href="#">riwayat restock</a></li>
                                                 <li><a onclick="edit(<?php echo $c->id_bahan_baku; ?>)" data-toggle="modal" href="#">Edit</a></li>
                                                 <li><a onclick="return confirm('Anda Yakin Ingin Menghapus Data?')" href="<?php echo base_url().'index.php/bahan_baku/delete/'.$c->id_bahan_baku ?>">Delete</a></li>
                                             </ul>

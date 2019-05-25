@@ -1,8 +1,8 @@
 <div class="modal-dialog">
     <div class="modal-content">
-        <form action="<?php echo base_url()."index.php/bahan_baku/update_re_stock" ?>" method="post">
+        <form action="<?php echo base_url()."index.php/produk/update_re_stock" ?>" method="post">
             <div class="modal-header header-color-modal bg-color-1">
-                <h4 class="modal-title">Restock Bahan Baku</h4>
+                <h4 class="modal-title">Restock Produk</h4>
                 <div class="modal-close-area modal-close-df">
                     <a class="close" data-dismiss="modal" href="#"><i class="fa fa-close"></i></a>
                 </div>
@@ -10,13 +10,13 @@
             <div class="modal-body">
                 <div class="row">
                     <?php
-                    foreach($bahan_baku as $c){
+                    foreach($produk as $c){
                     ?>
-                    <input type="hidden" name="id_bahan_baku" id="id_bahan_baku" value="<?php echo $c->id_bahan_baku; ?>">
+                    <input type="hidden" name="id_produk" id="id_produk" value="<?php echo $c->id_produk; ?>">
                     <div class="col-md-6">
                         <div class="form-group-inner">
-                            <label for="" class="pull-left">Nama Bahan Baku</label>
-                            <input type="text" name="nama" class="form-control" placeholder="Masukkan Satuan" value="<?php echo $c->nama_bahan_baku ?>" disabled>
+                            <label for="" class="pull-left">Nama produk</label>
+                            <input type="text" name="nama" class="form-control" placeholder="Masukkan nama" value="<?php echo $c->nama_produk ?>" disabled>
                         </div>
                     </div>
                     <div class="col-md-6">

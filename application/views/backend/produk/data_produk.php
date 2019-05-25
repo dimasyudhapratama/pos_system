@@ -26,8 +26,8 @@
                                     <th>Satuan</th>
                                     <th>Tipe Stock</th>
                                     <th>Stock</th>
+                                    <th>Metode Tracking</th>
                                     <th>Limit Stok</th>
-                                    <th>Image Produk</th>
                                     <th style="text-align:center">Aksi</th>
                                 </tr>
                             </thead>
@@ -44,8 +44,17 @@
                                     <td><?php echo $c->satuan; ?></td>
                                     <td><?php echo $c->tipe_stok; ?></td>
                                     <td><?php echo $c->stok; ?></td>
+                                    <td>
+                                        <?php 
+                                            if($c->metode_tracking==1){
+                                                echo "Berdasarkan Produk";
+                                            }else if($c->metode_tracking==2){
+                                                echo "Berdasarkan Bahan Baku";
+                                            }
+                                        ?>
+                                            
+                                    </td>
                                     <td><?php echo $c->limit_stok; ?></td>
-                                    <td><?php echo $c->image_produk; ?></td>
                                     <td style="text-align:center">
                                         <div class="btn-group btn-sm">
                                             <button type="button" class="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown">
@@ -54,9 +63,9 @@
                                             </button>
                                             <ul class="dropdown-menu" role="menu">
                                                 <!-- <li><a class="click-edit" href="#" id="<?php echo $c->id_produk; ?>">Edit</a></li> -->
-                                                <li><a onclick="tampilgambar(<?php echo $c->id_produk; ?>)" data-toggle="modal" href="#">Tampil Gambar</a></li>
-                                                <li><a onclick="edit(<?php echo $c->id_produk; ?>)" data-toggle="modal" href="#">Edit</a></li>
-                                                <li><a onclick="return confirm('Anda Yakin Ingin Menghapus Data?')" href="<?php echo base_url().'index.php/produk/delete/'.$c->id_produk ?>">Delete</a></li>
+                                            <li><a onclick="re_stock(<?php echo $c->id_produk; ?>)" data-toggle="modal" href="#">Re-Stock</a></li>
+                                            <li><a onclick="edit(<?php echo $c->id_produk; ?>)" data-toggle="modal" href="#">Edit</a></li>
+                                            <li><a onclick="return confirm('Anda Yakin Ingin Menghapus Data?')" href="<?php echo base_url().'index.php/produk/delete/'.$c->id_produk ?>">Delete</a></li>
                                             </ul>
                                         </div>
                                     </td>
@@ -102,7 +111,7 @@
     <div id="modaladd" class="modal modal-edu-general default-popup-PrimaryModal fade" role="dialog">
         <div class="modal-dialog">
             <div class="modal-content">
-                <form action="<?php echo base_url()."index.php/produk/add" ?>" method="post" enctype="multipart/form-data">
+                <form action="<?php echo base_url()."index.php/produk/add" ?>" method="post">
                     <div class="modal-header header-color-modal bg-color-1">
                         <h4 class="modal-title">Tambah Data</h4>
                         <div class="modal-close-area modal-close-df">
@@ -162,12 +171,16 @@
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group-inner">
-                                    <label>photo</label>
-                                    <input type="file" name="photo" class="form-control">
+                                <label for="" class="pull-left">Metode Tracking</label>
+                                <select name="metode_tracking" class="form-control showHide" data-target="#hideStockLimit" required="">
+                                    <option value="">---Pilih---</option>
+                                    <option value="1">Berdasarkan Produk</option>
+                                    <option value="2">Berdasarkan Bahan Baku</option>
+                                </select>
                                 </div>
-                                
                             </div>
-                        <div class="row">
+                        </div>
+                        <div class="row  toHide" id="hideStockLimit">
                         <div class="col-md-6">
                             <div class="form-group-inner">
                                 <label for="" class="pull-left">Stock</label>
@@ -190,8 +203,10 @@
             </div>
         </div>
     </div>
-</div>
-<div id="modalajax" class="modal modal-edu-general default-popup-PrimaryModal fade" role="dialog">
+    <div id="modaledit" class="modal modal-edu-general default-popup-PrimaryModal fade" role="dialog">
+    </div>
+    <div id="modal_re_stock" class="modal modal-edu-general default-popup-PrimaryModal fade" role="dialog">
+    </div>
 </div>
 
 <script type="text/javascript">
@@ -214,19 +229,19 @@
             type: "POST",
             data : {id_produk: id},
             success: function (ajaxData){
-                $("#modalajax").html(ajaxData);
-                $("#modalajax").modal('show');
+                $("#modaledit").html(ajaxData);
+                $("#modaledit").modal('show',{backdrop: 'true'});
             }
         });
     }
-    function tampilgambar(id){
-         $.ajax({
-            url: "<?php echo base_url().'index.php/produk/tampilgambar'; ?>",
+    function re_stock(id){
+        $.ajax({
+            url: "<?php echo base_url().'index.php/produk/re_stock'; ?>",
             type: "POST",
             data : {id_produk: id},
             success: function (ajaxData){
-                $("#modalajax").html(ajaxData);
-                $("#modalajax").modal('show',{backdrop: 'true'});
+                $("#modal_re_stock").html(ajaxData);
+                $("#modal_re_stock").modal('show',{backdrop: 'true'});
             }
         });
     }
