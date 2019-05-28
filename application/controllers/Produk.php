@@ -45,18 +45,22 @@ Class Produk extends CI_Controller{
                 'rules' =>'integer'
             ),
             array(
-                'field' =>'metode_tracking',
-                'label' =>'Metode Tracking',
-                'rules' =>'required'
-            ),
-            array(
                 'field' =>'limit_stok',
                 'label' =>'Limit Stok',
                 'rules' =>'integer'
             )
         );
+        $upload['upload_path']          ='./upload/produk/';
+        $upload['allowed_types']        ='gif|jpg|png|JPG|PNG';
+        $upload['file_name']            = $_FILES['photo']['name'];
+        $upload['overwrite']            =true;
+        $upload['max_size']             =1024;
+        $this->load->library('upload');
+        $this->upload->initialize($upload);
         $this->form_validation->set_rules($config);
         if($this->form_validation->run()==TRUE){
+            $file = $this->upload->data();
+            $foto = $file['file_name'];
             $data = array(
                 'id_kategori_produk' => $this->input->post('id_kategori_produk'),
                 'nama_produk' => $this->input->post('nama_produk'),
@@ -64,13 +68,19 @@ Class Produk extends CI_Controller{
                 'satuan' => $this->input->post('satuan'),
                 'tipe_stok' => $this->input->post('tipe_stok'),
                 'stok' => $this->input->post('stok'),
-                'metode_tracking' => $this->input->post('metode_tracking'),
-                'limit_stok' => $this->input->post('limit_stok')
+                'limit_stok' => $this->input->post('limit_stok'),
+                'image_produk' => $foto
             );
-            if($this->M_produk->addproduk($data)==TRUE){
-                redirect('produk');
-            }else{
-                redirect('test');
+            if($this->upload->do_upload('photo'))
+            {
+                if($this->M_produk->addproduk($data)==TRUE){
+                    redirect('produk');
+                }else{
+                    redirect('test');
+                }
+            }
+            else{
+                echo $this->upload->display_errors();
             }
         }
     }
@@ -83,10 +93,7 @@ Class Produk extends CI_Controller{
         $data['kategori'] = $this->M_produk->getKategori();
         $this->load->view("backend/produk/edit_produk",$data);
     }
-     function update(){
-
-        
-            
+    function update(){
         $config = array(
             array(
                 'field' => 'id_produk',
@@ -120,18 +127,23 @@ Class Produk extends CI_Controller{
                 'rules' =>'required'
             ),
             array(
-                'field' =>'metode_tracking',
-                'label' =>'Metode Tracking',
-                'rules' =>'required'
-            ),
-            array(
                 'field' =>'limit_stok',
                 'label' =>'Limit Stok',
                 'rules' =>'integer'
             )
         );
+        $upload['upload_path']          ='./upload/produk/';
+        $upload['allowed_types']        ='gif|jpg|png|JPG|PNG';
+        $upload['file_name']            = $_FILES['gambar']['name'];
+        $upload['overwrite']            =true;
+        $upload['max_size']             =1024;
+        $this->load->library('upload');
+        $this->upload->initialize($upload);
         $this->form_validation->set_rules($config);
         if($this->form_validation->run()==TRUE){
+            $file = $this->upload->data();
+            $foto = $file['file_name'];
+           
             $where = array(
                 'id_produk' => $this->input->post('id_produk')
             );
@@ -142,14 +154,22 @@ Class Produk extends CI_Controller{
                 'satuan' => $this->input->post('satuan'),
                 'tipe_stok' => $this->input->post('tipe_stok'),
                 'stok' => $this->input->post('stok'),
-                'metode_tracking' => $this->input->post('metode_tracking'),
-                'limit_stok' => $this->input->post('limit_stok')
+                'limit_stok' => $this->input->post('limit_stok'),
+                'image_produk' => $foto
             );
-            if($this->M_produk->updateproduk($where,$data)==TRUE){
+            if($this->upload->do_upload('gambar'))
+            {
+             if($this->M_produk->updateproduk($where,$data)==TRUE){
                 redirect('produk');
             }else{
                 redirect('test');
+                } 
+              
+                }
+            else{
+               echo $this->upload->display_errors(); 
             }
+            
         }
     }
       function delete($id){
@@ -228,5 +248,15 @@ Class Produk extends CI_Controller{
         
         redirect('produk');
 
+        }
+    function tampilgambar(){
+        // $data['dd'] = $this->M_produk->getProduk();
+        // $this->load->view("backend/master-template",$data);   
+            $data['id'] = $this->input->post('id_produk');
+            $where = array(
+                'id_produk' => $this->input->post('id_produk')
+            );
+            $data['produk'] = $this->M_produk->get1produk($where);
+            $this->load->view("backend/produk/tampil_gambar",$data);
         }
     }

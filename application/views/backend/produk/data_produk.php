@@ -23,10 +23,8 @@
                                     <th>Nama Produk</th>
                                     <th>kategori produk</th>
                                     <th>Harga Jual</th>
-                                    <th>Satuan</th>
                                     <th>Tipe Stock</th>
                                     <th>Stock</th>
-                                    <th>Metode Tracking</th>
                                     <th>Limit Stok</th>
                                     <th style="text-align:center">Aksi</th>
                                 </tr>
@@ -41,19 +39,8 @@
                                     <td><?php echo $c->nama_produk; ?></td>
                                     <td><?php echo $c->nama_kategori; ?></td>
                                     <td><?php echo $c->harga_jual; ?></td>
-                                    <td><?php echo $c->satuan; ?></td>
                                     <td><?php echo $c->tipe_stok; ?></td>
                                     <td><?php echo $c->stok; ?></td>
-                                    <td>
-                                        <?php 
-                                            if($c->metode_tracking==1){
-                                                echo "Berdasarkan Produk";
-                                            }else if($c->metode_tracking==2){
-                                                echo "Berdasarkan Bahan Baku";
-                                            }
-                                        ?>
-                                            
-                                    </td>
                                     <td><?php echo $c->limit_stok; ?></td>
                                     <td style="text-align:center">
                                         <div class="btn-group btn-sm">
@@ -62,7 +49,7 @@
                                                 <span class="caret"></span>
                                             </button>
                                             <ul class="dropdown-menu" role="menu">
-                                                <!-- <li><a class="click-edit" href="#" id="<?php echo $c->id_produk; ?>">Edit</a></li> -->
+                                            <li><a onclick="tampilgambar(<?php echo $c->id_produk; ?>)" data-toggle="modal" href="#">Tampil Gambar</a></li>   
                                             <li><a onclick="re_stock(<?php echo $c->id_produk; ?>)" data-toggle="modal" href="#">Re-Stock</a></li>
                                             <li><a onclick="edit(<?php echo $c->id_produk; ?>)" data-toggle="modal" href="#">Edit</a></li>
                                             <li><a onclick="return confirm('Anda Yakin Ingin Menghapus Data?')" href="<?php echo base_url().'index.php/produk/delete/'.$c->id_produk ?>">Delete</a></li>
@@ -171,12 +158,8 @@
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group-inner">
-                                <label for="" class="pull-left">Metode Tracking</label>
-                                <select name="metode_tracking" class="form-control showHide" data-target="#hideStockLimit" required="">
-                                    <option value="">---Pilih---</option>
-                                    <option value="1">Berdasarkan Produk</option>
-                                    <option value="2">Berdasarkan Bahan Baku</option>
-                                </select>
+                                    <label class="pull-left">Photo</label>
+                                    <input type="file" name="photo" class="form-control">
                                 </div>
                             </div>
                         </div>
@@ -206,6 +189,8 @@
     <div id="modaledit" class="modal modal-edu-general default-popup-PrimaryModal fade" role="dialog">
     </div>
     <div id="modal_re_stock" class="modal modal-edu-general default-popup-PrimaryModal fade" role="dialog">
+    </div>
+    <div id="modalajax" class="modal modal-edu-general default-popup-PrimaryModal fade" role="dialog">
     </div>
 </div>
 
@@ -242,6 +227,17 @@
             success: function (ajaxData){
                 $("#modal_re_stock").html(ajaxData);
                 $("#modal_re_stock").modal('show',{backdrop: 'true'});
+            }
+        });
+    }
+    function tampilgambar(id){
+         $.ajax({
+            url: "<?php echo base_url().'index.php/produk/tampilgambar'; ?>",
+            type: "POST",
+            data : {id_produk: id},
+            success: function (ajaxData){
+                $("#modalajax").html(ajaxData);
+                $("#modalajax").modal('show',{backdrop: 'true'});
             }
         });
     }
