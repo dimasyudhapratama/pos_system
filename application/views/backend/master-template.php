@@ -138,7 +138,7 @@
     <div class="left-sidebar-pro">
         <nav id="sidebar" class="">
             <div class="sidebar-header">
-                <a href="index.html"><img class="main-logo" src="<?php echo base_url() ?>assets/backend/img/logo/cocok.png" alt="" /></a>
+                <a href="index.html"><img class="main-logo" src="<?php echo base_url() ?>assets/backend/img/logo/hm.png" alt="" /></a>
                 <strong><a href="index.html"><img src="<?php echo base_url() ?>assets/backend/img/logo/cocok1.png" alt="" /></a></strong>
             </div>
             <div class="left-custom-menu-adp-wrap comment-scrollbar">
