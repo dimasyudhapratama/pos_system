@@ -1,4 +1,8 @@
-
+<script type="text/javascript">
+    $(document).ready(function(){
+        $("#primary-table").DataTable();
+    });
+</script>
 <div class="container-fluid">
     <div class="row">
         <div id="table-element" class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
@@ -16,7 +20,7 @@
                 </div>
                 <div class="sparkline8-graph">
                     <div class="static-table-list">
-                        <table class="table">
+                        <table class="table" id="primary-table">
                             <thead>
                                 <tr style="background-color:#EEEEEE">
                                     <th>#</th>
@@ -98,7 +102,7 @@
     <div id="modaladd" class="modal modal-edu-general default-popup-PrimaryModal fade" role="dialog">
         <div class="modal-dialog">
             <div class="modal-content">
-                <form action="<?php echo base_url()."index.php/produk/add" ?>" method="post">
+                <form action="<?php echo base_url()."index.php/produk/add" ?>" method="post" enctype="multipart/form-data">
                     <div class="modal-header header-color-modal bg-color-1">
                         <h4 class="modal-title">Tambah Data</h4>
                         <div class="modal-close-area modal-close-df">

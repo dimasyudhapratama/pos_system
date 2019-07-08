@@ -1,28 +1,18 @@
 <script type="text/javascript">
-// $(document).ready(function(){
-    //     $("#form-element").hide();
-    // });
-    // function openForm(){
-    //     $("#table-element").addClass("col-lg-8 col-md-8 col-sm-8");
-    //     $("#table-element").removeClass("col-lg-12 col-md-12 col-sm-12");
-    //     $("#form-element").show();
+    $(document).ready(function(){
+        $("#primary-table").DataTable();
+    });
+    // function edit(id){
+    //     $.ajax({
+    //         url: "<?php echo base_url().'index.php/pemasukan_lain/edit'; ?>",
+    //         type: "POST",
+    //         data : {id_pemasukan_lain: id},
+    //         success: function (ajaxData){
+    //             $("#modaledit").html(ajaxData);
+    //             $("#modaledit").modal('show',{backdrop: 'true'});
+    //         }
+    //     });
     // }
-    // function closeForm(){
-    //     $("#table-element").removeClass("col-lg-8 col-md-8 col-sm-8");
-    //     $("#table-element").addClass("col-lg-12 col-md-12 col-sm-12");
-    //     $("#form-element").hide();
-    // }
-    function edit(id){
-        $.ajax({
-            url: "<?php echo base_url().'index.php/pemasukan_lain/edit'; ?>",
-            type: "POST",
-            data : {id_pemasukan_lain: id},
-            success: function (ajaxData){
-                $("#modaledit").html(ajaxData);
-                $("#modaledit").modal('show',{backdrop: 'true'});
-            }
-        });
-    }
 </script>
 <div class="container-fluid">
     <div class="row">
@@ -35,20 +25,19 @@
                         </div>
                         <div class="pull-right">
                             <a class="btn btn-sm btn-primary mg-b-10" href="#" data-toggle="modal" data-target="#modaladd">Tambah</a>
-                            <!-- <button class="btn btn-default" onclick="openForm()">Test</button> -->
                         </div>
                     </div>
                 </div>
                 <div class="sparkline8-graph">
                     <div class="static-table-list">
-                        <table class="table">
+                        <table class="table" id="primary-table">
                             <thead>
                                 <tr style="background-color:#EEEEEE">
                                     <th>#</th>
+                                    <th>Tanggal</th>
                                     <th>Judul Pemasukan Lain</th>
                                     <th>Jumlah</th>
                                     <th>Keterangan</th>
-                                    <th>Tanggal</th>
                                     <th style="text-align:center">Aksi</th>
                                 </tr>
                             </thead>
@@ -56,13 +45,14 @@
                                 <?php 
                                 $no = 1;
                                 foreach($dd as $c){ 
+                                    $create_date = date_create($c->tanggal);
                                 ?>
                                 <tr>
                                     <td><?php echo $no++; ?></td>
+                                    <td><?php echo date_format($create_date,"d-m-Y H:i:s"); ?></td>
                                     <td><?php echo $c->judul_pemasukan_lain; ?></td>
-                                    <td><?php echo $c->jumlah; ?></td>
+                                    <td><?php echo number_format($c->jumlah,'2',',','.'); ?></td>
                                     <td><?php echo $c->keterangan; ?></td>
-                                    <td><?php echo $c->tanggal; ?></td>
                                     <td style="text-align:center">
                                         <div class="btn-group btn-sm">
                                             <button type="button" class="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown">
@@ -70,10 +60,11 @@
                                                 <span class="caret"></span>
                                             </button>
                                             <ul class="dropdown-menu" role="menu">
-                                                <!-- <li><a class="click-edit" href="#" id="<?php echo $c->id_pemasukan_lain; ?>">Edit</a></li> -->
-                                                
-                                                <li><a onclick="edit(<?php echo $c->id_pemasukan_lain; ?>)" data-toggle="modal" href="#">Edit</a></li>
-                                                <li><a onclick="return confirm('Anda Yakin Ingin Menghapus Data?')" href="<?php echo base_url().'index.php/pemasukan_lain/delete/'.$c->id_pemasukan_lain ?>">Delete</a></li>
+                                                <!-- <li><a onclick="edit(<?php echo $c->id_pemasukan_lain; ?>)" data-toggle="modal" href="#">Edit</a></li> -->
+                                                <!-- <li><a onclick="return confirm('Anda Yakin Ingin Menghapus Data?')" href="<?php echo base_url().'index.php/pemasukan_lain/delete/'.$c->id_pemasukan_lain ?>">Delete</a></li> -->
+                                                <?php if($c->cancel_status == 0){ ?> 
+                                                <li><a onclick="return confirm('Anda Yakin Membatalkan Transaksi?')" href="<?php echo base_url().'index.php/pemasukan_lain/cancel/'.$c->id_pemasukan_lain ?>">Cancel</a></li>
+                                                <?php } ?>
                                             </ul>
                                         </div>
                                     </td>

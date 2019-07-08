@@ -171,8 +171,8 @@ function ubahStatus(id){
                                                     <td><?php echo $no++ ?></td>
                                                     <td><?php echo $c->tgl_pemasokan; ?></td>
                                                     <td><?php echo $c->nama_supplier; ?></td>
-                                                    <td><?php echo $c->grand_total; ?></td>
-                                                    <td><?php echo $c->jumlah_terbayar; ?></td>
+                                                    <td><?php echo "Rp. ".number_format($c->grand_total,0,',','.'); ?></td>
+                                                    <td><?php echo "Rp. ".number_format($c->jumlah_terbayar,0,',','.'); ?></td>
                                                     <td style="text-align:center">
                                                         <div class="btn-group btn-sm">
                                                             <button type="button" class="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown">

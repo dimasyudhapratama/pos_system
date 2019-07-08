@@ -1,5 +1,7 @@
-d
 <script type="text/javascript">
+    $(document).ready(function(){
+        $("#primary-table").DataTable();
+    });
     // $(document).ready(function(){
     //     $("#form-element").hide();
     // });
@@ -64,7 +66,7 @@ d
                 </div>
                 <div class="sparkline8-graph">
                     <div class="static-table-list">
-                        <table class="table">
+                        <table class="table" id="primary-table">
                             <thead>
                                 <tr style="background-color:#EEEEEE">
                                     <th>#</th>

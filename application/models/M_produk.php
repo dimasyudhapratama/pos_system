@@ -16,6 +16,14 @@ Class M_produk extends CI_Model{
     function get1produk($where){
         return $this->db->get_where($this->_table,$where)->result();
     }
+    function getProdukFiltered($value){
+        $this->db->select('*');
+        $this->db->from('produk p,kategori_produk kp');
+        $where = "kp.id_kategori_produk=p.id_kategori_produk";
+        $this->db->where($where);
+        $this->db->like("nama_produk",$value);
+        return $this->db->get()->result();
+    }
     function addproduk($data){
     	if($this->db->insert($this->_table,$data) == TRUE){
     		return TRUE;
