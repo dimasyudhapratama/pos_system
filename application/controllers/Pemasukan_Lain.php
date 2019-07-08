@@ -5,6 +5,7 @@ Class Pemasukan_Lain extends CI_Controller{
     function __construct(){
         parent::__construct();
         $this->load->model('M_pemasukan_lain');
+        $this->load->model('M_keuangan');
         $this->load->library('form_validation');
     }
     function index(){
@@ -39,13 +40,20 @@ Class Pemasukan_Lain extends CI_Controller{
         );
         $this->form_validation->set_rules($config);
         if($this->form_validation->run()==TRUE){
-             $data = array(
+            //Input Ke Tabel Pemasukan Lain 
+            $data = array(
                 'judul_pemasukan_lain' => $this->input->post('judul_pemasukan_lain'),
                 'jumlah' => $this->input->post('jumlah'),
                 'keterangan' => $this->input->post('keterangan'),
                 'tanggal' => $this->input->post("tanggal")
              );
-            if($this->M_pemasukan_lain->addPemasukanLain($data)==TRUE){
+             //Input Ke Tabel Rekap Keuangan Pemasukan
+            $data2 = array(
+                'tanggal' => $this->input->post("tanggal"),
+                'detail_info' => "Pemasukan Lain : ".$this->input->post('judul_pemasukan_lain'),
+                'jumlah' => $this->input->post("jumlah")
+             );
+            if($this->M_pemasukan_lain->addPemasukanLain($data) == TRUE AND $this->M_keuangan->inputPemasukan($data2) == TRUE){
                 redirect('pemasukan_lain');
             }else{
                 redirect('test');
@@ -60,48 +68,75 @@ Class Pemasukan_Lain extends CI_Controller{
         $data['pemasukan_lain'] = $this->M_pemasukan_lain->get1PemasukanLain($where);
         $this->load->view("backend/pemasukan_lain/edit_pemasukan_lain",$data);
     }
-     function update(){
-        $config = array(
-            array(
-                'field' => 'tanggal',
-                'label' => 'Tanggal',
-                'rules' => 'required'
-            ),
-            array(
-                'field' => 'judul_pemasukan_lain',
-                'label' => 'Judul Pemasukan Lain',
-                'rules' => 'required'
-            ),
-            array(
-                'field' => 'jumlah',
-                'label' => 'Jumlah',
-                'rules' => 'integer'
-            ),
-            array(
-                'field' => 'keterangan',
-                'label' => 'Keterangan',
-                'rules' => 'required'
-            )
+    //  function update(){
+    //     $config = array(
+    //         array(
+    //             'field' => 'tanggal',
+    //             'label' => 'Tanggal',
+    //             'rules' => 'required'
+    //         ),
+    //         array(
+    //             'field' => 'judul_pemasukan_lain',
+    //             'label' => 'Judul Pemasukan Lain',
+    //             'rules' => 'required'
+    //         ),
+    //         array(
+    //             'field' => 'jumlah',
+    //             'label' => 'Jumlah',
+    //             'rules' => 'integer'
+    //         ),
+    //         array(
+    //             'field' => 'keterangan',
+    //             'label' => 'Keterangan',
+    //             'rules' => 'required'
+    //         )
+    //     );
+    //     $this->form_validation->set_rules($config);
+    //     if($this->form_validation->run()==TRUE){
+    //         $where = array(
+    //             'id_pemasukan_lain' => $this->input->post('id_pemasukan_lain')
+    //         );
+    //         $data = array(
+    //             'tanggal' => $this->input->post('tanggal'),
+    //             'judul_pemasukan_lain' => $this->input->post('judul_pemasukan_lain'),
+    //             'jumlah' => $this->input->post('jumlah'),
+    //             'keterangan' => $this->input->post('keterangan')
+    //         );
+    //         if($this->M_pemasukan_lain->updatePemasukanLain($where,$data)==TRUE){
+    //             redirect('pemasukan_lain');
+    //         }else{
+    //             redirect('test');
+    //         }
+    //     }
+    // }
+    function cancel($id){
+        $where = array(
+            'id_pemasukan_lain' => $id
         );
-        $this->form_validation->set_rules($config);
-        if($this->form_validation->run()==TRUE){
-            $where = array(
-                'id_pemasukan_lain' => $this->input->post('id_pemasukan_lain')
-            );
-            $data = array(
-                'tanggal' => $this->input->post('tanggal'),
-                'judul_pemasukan_lain' => $this->input->post('judul_pemasukan_lain'),
-                'jumlah' => $this->input->post('jumlah'),
-                'keterangan' => $this->input->post('keterangan')
-            );
-            if($this->M_pemasukan_lain->updatePemasukanLain($where,$data)==TRUE){
-                redirect('pemasukan_lain');
-            }else{
-                redirect('test');
-            }
+        //Get Judul
+        $pemasukan_lain = $this->M_pemasukan_lain->get1PemasukanLain($where);
+        foreach($pemasukan_lain as $pl){
+            $judul = $pl->judul_pemasukan_lain;
+            $jumlah = $pl->jumlah;
+        }
+        //Ubah Status Pemasukan Lain
+        $data = array(
+            'cancel_status' => 1
+        );
+        //Tambah Di Rekap Pengeluaran
+        $data2 = array(
+            'tanggal' => date("Y-m-d H:i:s"),
+            'detail_info' => "Pembatalan Pemasukan Lain : ".$judul,
+            'jumlah' => $jumlah
+         );
+        if($this->M_pemasukan_lain->updatePemasukanLain($where,$data)==TRUE AND $this->M_keuangan->inputPengeluaran($data2) == TRUE){
+            redirect('pemasukan_lain');
+        }else{
+            redirect('test');
         }
     }
-      function delete($id){
+
+    function delete($id){
         $where = array(
             'id_pemasukan_lain' => $id
         );

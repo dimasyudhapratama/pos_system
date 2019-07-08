@@ -16,6 +16,13 @@ Class M_customer extends CI_Model{
     function get1Customer($where){
         return $this->db->get_where($this->_table,$where)->result();
     }
+    function getCustomerWithKeyword($value){
+        $this->db->select("*");
+        $this->db->from($this->_table);
+        $this->db->like("nama_customer",$value);
+        $this->db->or_like("no_hp",$value);
+        return $this->db->get()->result();
+    }
     function updateCustomer($where,$data){
         $this->db->where($where);
         if($this->db->update($this->_table,$data)==TRUE){

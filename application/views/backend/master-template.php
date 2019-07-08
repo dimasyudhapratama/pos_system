@@ -26,6 +26,10 @@
     <!-- Bootstrap CSS
 		============================================ -->
     <link rel="stylesheet" href="<?php echo base_url() ?>assets/backend/css/font-awesome.min.css">
+    <!-- Icofont CSS
+        ============================================ -->
+    <link rel="stylesheet" href="<?php echo base_url() ?>assets/backend/css/icofont/icofont.min.css">        
+        
     <!-- owl.carousel CSS
 		============================================ -->
     <link rel="stylesheet" href="<?php echo base_url() ?>assets/backend/css/owl.carousel.css">
@@ -142,7 +146,7 @@
                     <ul class="metismenu" id="menu1">
                         <li>
                             <a title="Dashboard" href="<?php echo base_url(); ?>" aria-expanded="false">
-                                <span class="fa fa-home" aria-hidden="true"></span> 
+                                <span class="icofont-ui-home" aria-hidden="true"></span> 
                                 <span class="mini-click-non">Home </span>
                             </a>
                         </li>
@@ -151,7 +155,7 @@
                         ?>
                             <li>
                                 <a title="Penjualan" href="<?php echo base_url().'index.php/penjualan'; ?>" aria-expanded="false">
-                                    <span class="educate-icon educate-event icon-wrap sub-icon-mg" aria-hidden="true"></span> 
+                                    <span class="fa fa-shopping-cart" aria-hidden="true"></span> 
                                     <span class="mini-click-non">Penjualan</span>
                                 </a>
                             </li>
@@ -161,7 +165,7 @@
                         ?>
                             <li>
                                 <a title="Pemasokan" href="<?php echo base_url().'index.php/pemasokan'; ?>" aria-expanded="false">
-                                    <span class="educate-icon educate-event icon-wrap sub-icon-mg" aria-hidden="true"></span> 
+                                    <span class="fa fa-suitcase" aria-hidden="true"></span> 
                                     <span class="mini-click-non">Pemasokan</span>
                                 </a>
                             </li>
@@ -171,7 +175,7 @@
                         ?>
                             <li>
                                 <a class="has-arrow" href="#">
-                                    <span class="fa fa-home"></span>
+                                    <span class="fa fa-coffee"></span>
                                     <span class="mini-click-non">Katalog</span>
                                     </a>
                                 <ul class="submenu-angle" aria-expanded="true">
@@ -185,7 +189,7 @@
                         ?>
                             <li>
                                 <a class="has-arrow" href="#">
-                                    <span class="fa fa-home"></span>
+                                    <span class="fa fa-lemon-o"></span>
                                     <span class="mini-click-non">Bahan Baku</span>
                                     </a>
                                 <ul class="submenu-angle" aria-expanded="true">
@@ -200,7 +204,7 @@
                         ?>
                             <li>
                                 <a title="Customer" href="<?php echo base_url().'index.php/customer';?>" aria-expanded="false">
-                                    <span class="educate-icon educate-event icon-wrap sub-icon-mg" aria-hidden="true"></span> 
+                                    <span class="fa fa-user" aria-hidden="true"></span> 
                                     <span class="mini-click-non">Customer</span>
                                 </a>
                             </li>
@@ -210,7 +214,7 @@
                         ?>
                             <li>
                                 <a title="Supplier" href="<?php echo base_url().'index.php/supplier'; ?>" aria-expanded="false">
-                                    <span class="educate-icon educate-event icon-wrap sub-icon-mg" aria-hidden="true"></span> 
+                                    <span class="fa fa-user" aria-hidden="true"></span> 
                                     <span class="mini-click-non">Supplier</span>
                                 </a>
                             </li>
@@ -220,7 +224,7 @@
                         ?>
                             <li>
                                 <a class="has-arrow" href="#">
-                                    <span class="fa fa-person"></span>
+                                    <span class="icofont-businessman"></span>
                                     <span class="mini-click-non">Staff</span>
                                     </a>
                                 <ul class="submenu-angle" aria-expanded="true">
@@ -235,7 +239,7 @@
                         ?>
                         <li>
                             <a class="has-arrow" href="#">
-								   <span class="fa fa-home"></span>
+								   <span class="fa fa-fax"></span>
 								   <span class="mini-click-non">Keuangan</span>
 								</a>
                             <ul class="submenu-angle" aria-expanded="true">
@@ -276,27 +280,20 @@
                                         </div>
                                     </div>
                                     <div class="col-lg-6 col-md-7 col-sm-6 col-xs-12">
-                                        <div class="header-top-menu tabl-d-n">
-                                            <ul class="nav navbar-nav mai-top-nav">
-                                                <li class="nav-item"><a href="#" class="nav-link">Documentation</a>
-                                                </li>
-
-                                                <li class="nav-item"><a href="#" class="nav-link">Support</a>
-                                                </li>
-                                            </ul>
-                                        </div>
+                                        
                                     </div>
                                     <div class="col-lg-5 col-md-5 col-sm-12 col-xs-12">
                                         <div class="header-right-info">
                                             <ul class="nav navbar-nav mai-top-nav header-right-menu">
                                                 <li class="nav-item">
                                                     <a href="#" data-toggle="dropdown" role="button" aria-expanded="false" class="nav-link dropdown-toggle">
-															<img src="<?php echo base_url() ?>assets/backend/img/product/pro4.jpg" alt="" />
+                                                            <!-- <img src="<?php echo base_url() ?>assets/backend/img/product/pro4.jpg" alt="" /> -->
+                                                            <i class="icofont-user-alt-7" alt=""></i>
 															<span class="admin-name"><?php echo $this->session->userdata('nama_terang'); ?></span>
 															<i class="fa fa-angle-down edu-icon edu-down-arrow"></i>
 														</a>
                                                     <ul role="menu" class="dropdown-header-top author-log dropdown-menu animated zoomIn">
-                                                        <li><a href="<?php echo base_url().'index.php/login/logout' ?>"><span class="edu-icon edu-locked author-log-ic"></span>Log Out</a>
+                                                        <li><a href="<?php echo base_url().'index.php/login/logout' ?>" onclick="return confirm('Anda Yakin Ingin Keluar?')"><span class="edu-icon edu-locked author-log-ic"></span>Log Out</a>
                                                         </li>
                                                     </ul>
                                                 </li>

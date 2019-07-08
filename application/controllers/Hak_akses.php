@@ -40,6 +40,7 @@ Class Hak_akses extends CI_Controller{
             $this->session->set_flashdata("input_failed","<div class='alert alert-danger'>
             <button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button>Data Gagal Ditambahkan!!<br>".$gagal."</div>"); 
         }
+        redirect("hak_akses");
         
     }
     function edit(){

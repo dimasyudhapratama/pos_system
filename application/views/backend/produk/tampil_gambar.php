@@ -23,10 +23,6 @@
                     <?php } ?>
                 </div>
             </div>
-            <div class="modal-footer">
-                <input class="btn btn-sm btn-default" type="reset" value="Reset">
-                <input class="btn btn-sm btn-primary" type="submit" value="Simpan">
-            </div>
         </form> 
     </div>
 </div>

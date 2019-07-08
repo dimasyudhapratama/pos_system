@@ -8,20 +8,34 @@ class ProdukAPI extends REST_Controller{
         $this->load->model('M_produk');
     }
     function index_get(){
-        $produk = $this->M_produk->getProduk();
+        if($this->get("search")==1){
+            $value = $this->get("value");
+            $produk = $this->M_produk->getProdukFiltered($value);
+        }else if($this->get("filter")==1){
+            $where = array(
+                'id_kategori_produk' => $this->get("id_kategori_produk")
+            );
+            $produk = $this->M_produk->get1Produk($where);
+        }else{
+            $produk = $this->M_produk->getProduk();
+        }
         $result = array(
             'success' => 1,
             'message' => 'Fetch Data Success'
         );
         $result['data'] = array();
+        $jumlah = 0;
         foreach($produk as $p){
             $index['id_produk'] = $p->id_produk;
             $index['nama_produk'] = $p->nama_produk;
-            $index['harga_jual'] = "Rp. ".number_format($p->harga_jual,'0',',','.');
+            $index['harga_jual'] = $p->harga_jual;
             $index['tipe_stok'] = $p->tipe_stok;
             $index['stok'] = $p->stok;
+            $index['image_produk'] = $p->image_produk;
+            $jumlah++;
             array_push($result['data'],$index);
         }
+        $result['jumlah_data'] = $jumlah;
         $this->response($result);
     }
 }

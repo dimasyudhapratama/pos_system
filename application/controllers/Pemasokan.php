@@ -127,7 +127,7 @@ Class Pemasokan extends CI_Controller{
                     'detail_info' => "Pembayaran Ke Supplier ".$nama_supplier,
                     'jumlah' => $jumlah_terbayar
                 );
-                $this->M_pengeluaran->inputPengeluaran($data_pengeluaran);
+                $this->M_keuangan->inputPengeluaran($data_pengeluaran);
                 //Menambah Stok Bahan Baku
                 $detail_pasok_bahan_baku = $this->M_pemasokan->getDetailPemasokanBahanBaku($where); //Mendapatkan Record Detail Pasok Bahan Baku
                 foreach($detail_pasok_bahan_baku as $row){
@@ -207,7 +207,7 @@ Class Pemasokan extends CI_Controller{
                 'detail_info' => "Pembayaran Ke Supplier ".$nama_supplier,
                 'jumlah' => $jumlah_terbayar
             );
-            $this->M_pengeluaran->inputPengeluaran($data_pengeluaran);
+            $this->M_keuangan->inputPengeluaran($data_pengeluaran);
             //Menambah Stok Bahan Baku
             $detail_pasok_bahan_baku = $this->M_pemasokan->getDetailPemasokanBahanBaku($where); //Mendapatkan Record Detail Pasok Bahan Baku
             foreach($detail_pasok_bahan_baku as $row){
@@ -286,7 +286,7 @@ Class Pemasokan extends CI_Controller{
                 'detail_info' => "Pelunasan Pembayaran Ke Supplier ".$nama_supplier,
                 'jumlah' => $jumlah_terbayar
             );
-            $this->M_pengeluaran->inputPengeluaran($data_pengeluaran);
+            $this->M_keuangan->inputPengeluaran($data_pengeluaran);
         redirect('pemasokan');
     }
 }
